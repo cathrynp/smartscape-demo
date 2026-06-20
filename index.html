@@ -2419,7 +2419,22 @@
                     el.classList.add('on');
             }, i * 900);
         });
-        var prompt = 'You are SmartScape, an expert in native plants and climate-resilient landscaping for all US regions.\n\nSite details:\n- Zip code: ' + zip + '\n- Yard size: ' + sizeLabel + '\n- Sun exposure: ' + sun + '\n- Goals: ' + goals + '\n' + (imgData ? '- A photo of the site has been uploaded and included.\n' : '') + '\nAll plant recommendations must be genuinely native to that US state/region. Use the zip code to identify the correct USDA hardiness zone and ecoregion.\n\nRespond in EXACTLY this format:\n\nSITE ANALYSIS:\n[2-3 sentences: climate zone, typical soil and rainfall, any photo observations. Be specific to this region.]\n\nRECOMMENDED NATIVE PLANTS:\n[5-7 plants genuinely native to this US state/region. Each on its own line:\n- Common Name (Scientific name) — one sentence why it fits this site, sun exposure, and goals.]\n\nPLANTING TIMELINE:\n[4-5 season-by-season steps tailored to this specific climate. Be concrete and region-specific.]\n\nSPECIES COUNT: [number only]';
+        var realCity = '',
+            realState = '';
+        try {
+            var geoResp = await fetch('https://api.zippopotam.us/us/' + zip);
+            if (geoResp.ok) {
+                var geoData = await geoResp.json();
+                if (geoData.places && geoData.places[0]) {
+                    realCity = geoData.places[0]['place name'];
+                    realState = geoData.places[0]['state'];
+                }
+            }
+        } catch (geoErr) {
+            console.log('Zip lookup failed, falling back to AI estimate:', geoErr);
+        }
+        var locationLine = realCity ? ('- Actual city/town for this zip code (confirmed, use this exact name): ' + realCity + ', ' + realState + '\n') : '';
+        var prompt = 'You are SmartScape, an expert in native plants and climate-resilient landscaping for all US regions.\n\nSite details:\n- Zip code: ' + zip + '\n' + locationLine + '- Yard size: ' + sizeLabel + '\n- Sun exposure: ' + sun + '\n- Goals: ' + goals + '\n' + (imgData ? '- A photo of the site has been uploaded and included.\n' : '') + '\nAll plant recommendations must be genuinely native to that US state/region. Use the zip code to identify the correct USDA hardiness zone and ecoregion.' + (realCity ? ' The SITE ANALYSIS must refer to the city/town as "' + realCity + ', ' + realState + '" exactly as given above — do not guess a different city name.' : '') + '\n\nRespond in EXACTLY this format:\n\nSITE ANALYSIS:\n[2-3 sentences: climate zone, typical soil and rainfall, any photo observations. Be specific to this region.]\n\nRECOMMENDED NATIVE PLANTS:\n[5-7 plants genuinely native to this US state/region. Each on its own line:\n- Common Name (Scientific name) — one sentence why it fits this site, sun exposure, and goals.]\n\nPLANTING TIMELINE:\n[4-5 season-by-season steps tailored to this specific climate. Be concrete and region-specific.]\n\nSPECIES COUNT: [number only]';
         var messages = [{
             role: 'user',
             content: imgData ? [{
