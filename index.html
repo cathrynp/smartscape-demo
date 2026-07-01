@@ -2455,34 +2455,30 @@
             }] : prompt
         }];
         try {
-            var resp = await fetch('/.netlify/functions/generate', {
+            var jobId = 'job_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+            await fetch('/.netlify/functions/generate-background', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    model: 'claude-haiku-4-5-20251001',
-                    max_tokens: 800,
+                    jobId: jobId,
                     messages: messages
                 })
             });
-            var retries = 0;
-            while ((resp.status === 502 || resp.status === 504) && retries < 3) {
-                retries++;
-                await new Promise(function(r) { setTimeout(r, 3000); });
-                resp = await fetch('/.netlify/functions/generate', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        model: 'claude-haiku-4-5-20251001',
-                        max_tokens: 800,
-                        messages: messages
-                    })
-                });
+            var pollResult = null;
+            var pollAttempts = 0;
+            var maxPollAttempts = 48; // ~2 minutes at 2.5s intervals
+            while (pollAttempts < maxPollAttempts) {
+                await new Promise(function(r) { setTimeout(r, 2500); });
+                pollAttempts++;
+                var pollResp = await fetch('/.netlify/functions/check-result?jobId=' + encodeURIComponent(jobId));
+                var pollData = await pollResp.json();
+                if (pollData.status === 'done') { pollResult = pollData; break; }
+                if (pollData.status === 'error') { throw new Error(pollData.message || 'Generation failed'); }
             }
-            var data = await resp.json();
+            if (!pollResult) { throw new Error('This is taking longer than expected. Please try again in a moment.'); }
+            var data = JSON.parse(pollResult.body);
             if (data.error)
                 throw new Error(data.error.message || 'API error');
             var text = data.content && data.content[0] ? data.content[0].text : '';
