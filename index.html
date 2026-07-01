@@ -2468,7 +2468,7 @@
             });
             var pollResult = null;
             var pollAttempts = 0;
-            var maxPollAttempts = 48; // ~2 minutes at 2.5s intervals
+            var maxPollAttempts = 70; // ~3 minutes at 2.5s intervals (allows for eventual-consistency propagation delay)
             while (pollAttempts < maxPollAttempts) {
                 await new Promise(function(r) { setTimeout(r, 2500); });
                 pollAttempts++;
