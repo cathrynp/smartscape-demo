@@ -2099,17 +2099,22 @@
         var showNat = filter && filter !== 'all' ? national.filter(function(n) {
             return n.tags.includes(filter);
         }) : national;
-        document.getElementById('r-nurseries').textContent = local.length || '—';
+        var demoCap = 1;
+        var combined = showLocal.concat(showNat);
+        var shownNurseries = combined.slice(0, demoCap);
+        var remaining = combined.length - shownNurseries.length;
+        var totalAvailable = local.length || combined.length;
+        document.getElementById('r-nurseries').innerHTML = totalAvailable ? Math.min(demoCap, totalAvailable) + ' <span style="font-size:15px;font-weight:400;opacity:.65;">of ' + totalAvailable + '</span>' : '—';
         document.getElementById('nursery-label').textContent = local.length ? 'Local nurseries' : 'Ships nationwide';
-        document.getElementById('r-nursery-sub').textContent = local.length ? local.length + ' local nurseries near zip ' + currentZip + ' — all carry native plants for your region' : 'No local nurseries in our database yet for this region — national mail-order options below ship anywhere in the US';
+        document.getElementById('r-nursery-sub').textContent = combined.length ? Math.min(demoCap, combined.length) + ' of ' + combined.length + ' native nurseries shown near zip ' + currentZip + ' — get the app to see the full list' : 'No local nurseries in our database yet for this region — national mail-order options below ship anywhere in the US';
+        var shown = shownNurseries;
         var html = '';
-        if (showLocal.length) {
+        if (shown.length) {
             html += '<div class="region-label">📍 ' + getRegionLabel(region) + '</div>';
-            html += showLocal.map(renderRow).join('');
+            html += shown.map(renderRow).join('');
         }
-        if (showNat.length) {
-            html += '<div class="region-label" style="margin-top:' + (showLocal.length ? '1.25rem' : '0') + '">🚚 Ships nationwide</div>';
-            html += showNat.map(renderRow).join('');
+        if (remaining > 0) {
+            html += '<div style="padding:14px 4px 4px;color:#6b6558;font-style:italic;font-size:14px;">+ ' + remaining + ' more native nurseries near you. Want your own full Greenprint? <a href="https://greenprint-subscriber.netlify.app" style="color:#2d6a1f;font-weight:500;">Get the app for $9.99</a></div>';
         }
         if (!html)
             html = '<p style="font-size:13px;color:#aaa;">No results — try "All".</p>';
@@ -2434,7 +2439,7 @@
             console.log('Zip lookup failed, falling back to AI estimate:', geoErr);
         }
         var locationLine = realCity ? ('- Actual city/town for this zip code (confirmed, use this exact name): ' + realCity + ', ' + realState + '\n') : '';
-        var prompt = 'You are SmartScape, an expert in native plants and climate-resilient landscaping for all US regions.\n\nSite details:\n- Zip code: ' + zip + '\n' + locationLine + '- Yard size: ' + sizeLabel + '\n- Sun exposure: ' + sun + '\n- Goals: ' + goals + '\n' + (imgData ? '- A photo of the site has been uploaded and included.\n' : '') + '\nAll plant recommendations must be genuinely native to that US state/region. Use the zip code to identify the correct USDA hardiness zone and ecoregion.' + (realCity ? ' The SITE ANALYSIS must refer to the city/town as "' + realCity + ', ' + realState + '" exactly as given above — do not guess a different city name.' : '') + '\n\nRespond in EXACTLY this format:\n\nSITE ANALYSIS:\n[2-3 sentences: climate zone, typical soil and rainfall, any photo observations. Be specific to this region.]\n\nRECOMMENDED NATIVE PLANTS:\n[Group these 5-7 plants into landscaping layers using this exact structure: a LAYER line before each group, choosing only from these layer names as needed: LAYER: Canopy/Trees, LAYER: Shrub/Understory, LAYER: Groundcover. Only include a LAYER line if that group has at least one plant. Under each LAYER line, list each plant on its own line:\n- Common Name (Scientific name) — one sentence why it fits this site, sun exposure, and goals. End the line with "Lifecycle: Perennial." or "Lifecycle: Annual." or "Lifecycle: Biennial." based on the actual life cycle of that plant.]\n\nPLANTING TIMELINE:\n[4-5 season-by-season steps tailored to this specific climate. Be concrete and region-specific.]\n\nSPECIES COUNT: [number only]';
+        var prompt = 'You are SmartScape, an expert in native plants and climate-resilient landscaping for all US regions.\n\nSite details:\n- Zip code: ' + zip + '\n' + locationLine + '- Yard size: ' + sizeLabel + '\n- Sun exposure: ' + sun + '\n- Goals: ' + goals + '\n' + (imgData ? '- A photo of the site has been uploaded and included.\n' : '') + '\nAll plant recommendations must be genuinely native to that US state/region. Use the zip code to identify the correct USDA hardiness zone and ecoregion.' + (realCity ? ' The SITE ANALYSIS must refer to the city/town as "' + realCity + ', ' + realState + '" exactly as given above — do not guess a different city name.' : '') + '\n\nRespond in EXACTLY this format:\n\nSITE ANALYSIS:\n[2-3 sentences: climate zone, typical soil and rainfall, any photo observations. Be specific to this region.]\n\nRECOMMENDED NATIVE PLANTS:\n[Group these 5-7 plants into landscaping layers using this exact structure: a LAYER line before each group, choosing only from these layer names as needed, and always output the groups in this exact order — easiest/smallest commitment first, biggest last: LAYER: Groundcover, LAYER: Wildflowers & Grasses, LAYER: Shrubs & Bushes, LAYER: Canopy/Trees. Only include a LAYER line if that group has at least one plant. Under each LAYER line, list each plant on its own line:\n- Common Name (Scientific name) — one sentence why it fits this site, sun exposure, and goals. End the line with "Lifecycle: Perennial." or "Lifecycle: Annual." or "Lifecycle: Biennial." based on the actual life cycle of that plant.]\n\nPLANTING TIMELINE:\n[4-5 season-by-season steps tailored to this specific climate. Be concrete and region-specific.]\n\nSPECIES COUNT: [number only]';
         var messages = [{
             role: 'user',
             content: imgData ? [{
@@ -2516,28 +2521,14 @@
                     }
                 });
                 if (totalPlants > shown) {
-                    plantsHtml += '<div style="padding:14px 0 4px;color:#6b6558;font-style:italic;">+ ' + (totalPlants - shown) + ' more native plants and trees matched to your site — <a href="https://greenprint-subscriber.netlify.app" style="color:#2d6a1f;font-weight:500;">unlock your full Greenprint for $9.99</a></div>';
+                    plantsHtml += '<div style="padding:14px 0 4px;color:#6b6558;font-style:italic;">+ ' + (totalPlants - shown) + ' more native plants and trees matched to your site. Want your own full Greenprint? <a href="https://greenprint-subscriber.netlify.app" style="color:#2d6a1f;font-weight:500;">Get the app for $9.99</a></div>';
                 }
                 document.getElementById('r-plants').innerHTML = plantsHtml;
             } else {
                 document.getElementById('r-plants').textContent = text;
             }
-            if (pt) {
-                var timeLines = pt[1].trim().split('\n').filter(function(l) {
-                    return l.trim();
-                });
-                document.getElementById('r-time').innerHTML = timeLines.map(function(l) {
-                    var clean = l.replace(/\*\*/g, '');
-                    var ci = clean.indexOf(':');
-                    if (ci > -1 && ci < 35) {
-                        return '<div style="padding:10px 0;border-bottom:1px solid #f0ede8;"><span style="font-weight:500;color:#1a3a0f;">' + clean.substring(0, ci) + ':</span>' + clean.substring(ci + 1) + '</div>';
-                    }
-                    return '<div style="padding:10px 0;border-bottom:1px solid #f0ede8;">' + clean + '</div>';
-                }).join('');
-            } else {
-                document.getElementById('r-time').textContent = 'See recommendations above.';
-            }
-            document.getElementById('r-count').textContent = sc ? sc[1] : '6';
+            document.getElementById('r-time').innerHTML = '<div style="padding:10px 0;color:#6b6558;">The paid app includes a full 12-month, step-by-step planting &amp; maintenance calendar tailored to your site. Want your own full Greenprint? <a href="https://greenprint-subscriber.netlify.app" style="color:#2d6a1f;font-weight:500;">Get the app for $9.99</a></div>';
+            document.getElementById('r-count').innerHTML = rp ? shown + ' <span style="font-size:15px;font-weight:400;opacity:.65;">of ' + totalPlants + '</span>' : (sc ? sc[1] : '6');
             if (rp) {
                 var plants = parsePlants(rp[1]);
                 drawLayout(plants, yardSize);
