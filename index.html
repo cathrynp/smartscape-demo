@@ -897,17 +897,17 @@
         height: 100%;
         object-fit: cover;
         opacity: 0;
-        animation: fadeCycle 40s infinite;
+        animation: fadeCycle 20s infinite;
     }
     .fade-stage img:nth-child(1) { animation-delay: 0s; }
-    .fade-stage img:nth-child(2) { animation-delay: 10s; }
-    .fade-stage img:nth-child(3) { animation-delay: 20s; }
-    .fade-stage img:nth-child(4) { animation-delay: 30s; }
+    .fade-stage img:nth-child(2) { animation-delay: 5s; }
+    .fade-stage img:nth-child(3) { animation-delay: 10s; }
+    .fade-stage img:nth-child(4) { animation-delay: 15s; }
     @keyframes fadeCycle {
         0% { opacity: 0; }
-        4% { opacity: 1; }
+        8% { opacity: 1; }
         22% { opacity: 1; }
-        26% { opacity: 0; }
+        30% { opacity: 0; }
         100% { opacity: 0; }
     }
     .fade-caption {
@@ -919,12 +919,12 @@
         font-size: 0.85rem;
         font-weight: 600;
         opacity: 0;
-        animation: fadeCycle 40s infinite;
+        animation: fadeCycle 20s infinite;
     }
     .fade-caption:nth-of-type(1) { animation-delay: 0s; }
-    .fade-caption:nth-of-type(2) { animation-delay: 10s; }
-    .fade-caption:nth-of-type(3) { animation-delay: 20s; }
-    .fade-caption:nth-of-type(4) { animation-delay: 30s; }
+    .fade-caption:nth-of-type(2) { animation-delay: 5s; }
+    .fade-caption:nth-of-type(3) { animation-delay: 10s; }
+    .fade-caption:nth-of-type(4) { animation-delay: 15s; }
     @media (prefers-reduced-motion: reduce) {
         .fade-stage img, .fade-caption { animation: none; opacity: 0; }
         .fade-stage img:first-child, .fade-caption:first-of-type { opacity: 1; }
