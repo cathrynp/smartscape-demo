@@ -20,7 +20,7 @@
         --green-light: #c8e6b8;
         --green-pale: #f0f7eb;
         --cream: #faf8f3;
-        --warm-gray: #6b6558;
+        --warm-gray: #1c1a16;
         --dark: #1c1a16;
         --gold: #b8860b;
         --accent-teal: #3AADA0;
@@ -322,7 +322,7 @@
     }
 
     .remove-link {
-        color: #999;
+        color: #1c1a16;
         cursor: pointer;
         margin-left: auto;
         font-size: 12px;
@@ -437,7 +437,7 @@
 
     .goal-desc {
         font-size: 11px;
-        color: #aaa;
+        color: #1c1a16;
         line-height: 1.4;
     }
 
@@ -860,7 +860,7 @@
 
     .disclaimer {
         font-size: 11px;
-        color: #bbb;
+        color: #1c1a16;
         line-height: 1.6;
         margin-top: 1.5rem;
         padding-top: 1rem;
@@ -1123,6 +1123,7 @@
     }
     .stats-row {
       flex-direction: column;
+      align-items: center;
       gap: 2.5rem;
     }
     .bottom-actions {
@@ -1159,13 +1160,10 @@
       </div>
     </div>
     <div class="bottom-actions">
-      <a href="#" class="action-link">
+      <span class="action-link">
         Try the Demo
         <span class="arrow-down">&#8595;</span>
-      </a>
-      <a href="#" class="action-link">
-        Buy the full app<br>$9.99
-      </a>
+      </span>
     </div>
   </div>
 </section>
@@ -1212,7 +1210,7 @@
             <div class="section-sub">Enter your zip code. SmartScape's human expertise guides and shapes the AI-powered analysis of your site to build a personalized, native plant list — spanning groundcover to canopy — and a planting and maintenance timeline for the recommended nativescaping. Your Greenprint will include a list of native plant nurseries in your area, along with some that are national mail-order suppliers. Humans have assembled and are maintaining much of the data for Greenprints.</div>
             <div id="upload-area" class="upload-area">
                 <div class="upload-icon">📷</div>
-                <p style="font-size: 13px; color: #888; margin-bottom: 8px;">
+                <p style="font-size: 13px; color: #1c1a16; margin-bottom: 8px;">
                     No photo needed for this demo — just enter your zip code and go. 
                     <br>
                     <br>
@@ -1380,7 +1378,7 @@
                         <svg id="layout-svg" width="100%" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="display:block;border-radius:6px;background:white;"></svg>
                     </div>
                     <div class="layout-legend" id="layout-legend"></div>
-                    <p style="font-size:11px;color:#bbb;margin-top:8px;">Layout is illustrative and scaled to your yard size. Google Satellite-mapped layouts are planned for a future release.</p>
+                    <p style="font-size:11px;color:#1c1a16;margin-top:8px;">Layout is illustrative and scaled to your yard size. Google Satellite-mapped layouts are planned for a future release.</p>
                 </div>
             </div>
             <div class="result-card">
@@ -1415,6 +1413,7 @@
             </div>
             <div class="disclaimer">SmartScape's native plant recommendations are shaped and directed by real native-plant expertise, powered by Claude AI — trained on the USDA PLANTS Database, iNaturalist, university extension research, and peer-reviewed botanical literature. Recommendations are for informational purposes only. Your local nursery can confirm availability and answer any site-specific questions. Nursery data compiled from PlantNative.org, Calscape, Pollinator Pathway NW, Native Plants Hawaii, and regional conservation districts. All nurseries listed specialize in or carry native plants for their region. A note on AI's footprint: a single Greenprint uses roughly the energy and water of a couple Google searches — small on its own. AI's aggregate water and energy use at data-center scale is a real, valid concern. Every yard a Greenprint helps convert to natives can cut water use 60-80%, reduce pesticide/fertilizer runoff, and create pollinator habitat. SmartScape prototype — May 2026.</div>
             <button class="btn-ghost" onclick="restart()">↺ Start a new Greenprint</button>
+            <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" class="btn-primary" style="display:inline-block;margin-top:14px;">Buy the full app — $9.99</a>
         </div>
     </main>
     <footer>
@@ -2410,10 +2409,10 @@
             html += shown.map(renderRow).join('');
         }
         if (remaining > 0) {
-            html += '<div style="padding:14px 4px 4px;color:#6b6558;font-style:italic;font-size:14px;">+ ' + remaining + ' more native nurseries near you. Want your own full Greenprint? <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" style="color:#2d6a1f;font-weight:500;">Get the app for $9.99</a></div>';
+            html += '<div style="padding:14px 4px 4px;color:#1c1a16;font-style:italic;font-size:14px;">+ ' + remaining + ' more native nurseries near you. Want your own full Greenprint? <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" style="color:#2d6a1f;font-weight:500;">Get the app for $9.99</a></div>';
         }
         if (!html)
-            html = '<p style="font-size:13px;color:#aaa;">No results — try "All".</p>';
+            html = '<p style="font-size:13px;color:#1c1a16;">No results — try "All".</p>';
         document.getElementById('nursery-list').innerHTML = html;
     }
     function renderRow(n) {
@@ -2817,9 +2816,9 @@
                         var lifecycle = lcMatch ? lcMatch[1] : '';
                         clean = clean.replace(/\s*Lifecycle:\s*(Perennial|Annual|Biennial)\.?/i, '');
                         var parts = clean.split('—');
-                        var badge = lifecycle ? ' <span style="font-size:10px;letter-spacing:.03em;color:#6b6558;border:1px solid #ddd6c8;border-radius:10px;padding:1px 7px;">' + lifecycle + '</span>' : '';
+                        var badge = lifecycle ? ' <span style="font-size:10px;letter-spacing:.03em;color:#1c1a16;border:1px solid #ddd6c8;border-radius:10px;padding:1px 7px;">' + lifecycle + '</span>' : '';
                         if (parts.length > 1) {
-                            groupHtml += '<div style="padding:10px 0;border-bottom:1px solid #f0ede8;"><span style="font-weight:500;color:#1a3a0f;">' + parts[0].trim() + '</span>' + badge + '<br><span style="color:#6b6558;">' + parts.slice(1).join('—').trim() + '</span></div>';
+                            groupHtml += '<div style="padding:10px 0;border-bottom:1px solid #f0ede8;"><span style="font-weight:500;color:#1a3a0f;">' + parts[0].trim() + '</span>' + badge + '<br><span style="color:#1c1a16;">' + parts.slice(1).join('—').trim() + '</span></div>';
                         } else {
                             groupHtml += '<div style="padding:10px 0;border-bottom:1px solid #f0ede8;">' + clean + badge + '</div>';
                         }
@@ -2829,13 +2828,13 @@
                     }
                 });
                 if (totalPlants > shown) {
-                    plantsHtml += '<div style="padding:14px 0 4px;color:#6b6558;font-style:italic;">+ ' + (totalPlants - shown) + ' more native plants and trees matched to your site. Want your own full Greenprint? <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" style="color:#2d6a1f;font-weight:500;">Get the app for $9.99</a></div>';
+                    plantsHtml += '<div style="padding:14px 0 4px;color:#1c1a16;font-style:italic;">+ ' + (totalPlants - shown) + ' more native plants and trees matched to your site. Want your own full Greenprint? <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" style="color:#2d6a1f;font-weight:500;">Get the app for $9.99</a></div>';
                 }
                 document.getElementById('r-plants').innerHTML = plantsHtml;
             } else {
                 document.getElementById('r-plants').textContent = text;
             }
-            document.getElementById('r-time').innerHTML = '<div style="padding:10px 0;color:#6b6558;">The paid app includes a full 12-month, step-by-step planting &amp; maintenance calendar tailored to your site. Want your own full Greenprint? <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" style="color:#2d6a1f;font-weight:500;">Get the app for $9.99</a></div>';
+            document.getElementById('r-time').innerHTML = '<div style="padding:10px 0;color:#1c1a16;">The paid app includes a full 12-month, step-by-step planting &amp; maintenance calendar tailored to your site. Want your own full Greenprint? <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" style="color:#2d6a1f;font-weight:500;">Get the app for $9.99</a></div>';
             document.getElementById('r-count').innerHTML = rp ? shown + ' <span style="font-size:15px;font-weight:400;opacity:.65;">of ' + totalPlants + '</span>' : (sc ? sc[1] : '6');
             if (rp) {
                 var plants = parsePlants(rp[1]);
