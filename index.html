@@ -149,6 +149,13 @@
         padding: 3rem 1.5rem 5rem;
     }
 
+    .turquoise-panel {
+        background: rgba(79, 143, 136, 0.53);
+        border-radius: 20px;
+        padding: 2rem 1.5rem 2.5rem;
+        margin-bottom: 2rem;
+    }
+
     .progress {
         display: flex;
         gap: 8px;
@@ -1089,6 +1096,7 @@
   .bottom-actions {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 6rem;
     width: 100%;
   }
@@ -1102,6 +1110,13 @@
     flex-direction: column;
     align-items: center;
     gap: 0.25rem;
+  }
+
+  .action-link-secondary {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: underline;
+    font-weight: 400;
+    font-size: 0.95rem;
   }
 
   .arrow-down {
@@ -1128,6 +1143,7 @@
     }
     .bottom-actions {
       flex-direction: column;
+      align-items: center;
       gap: 2.5rem;
     }
   }
@@ -1164,6 +1180,7 @@
         Try the Demo
         <span class="arrow-down">&#8595;</span>
       </span>
+      <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" class="action-link-secondary">Buy the app — $9.99</a>
     </div>
   </div>
 </section>
@@ -1184,6 +1201,7 @@
     </section>
 
     <main class="app-wrap">
+        <div class="turquoise-panel">
         <div class="progress">
             <div class="progress-step">
                 <div class="step-num active" id="sn0">1</div>
@@ -1329,6 +1347,7 @@
                 </div>
             </div>
             <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" class="btn-primary" style="display:inline-block;margin-top:18px;">Buy Greenprint Generator — $9.99 →</a>
+        </div>
         </div>
         <div class="screen" id="s3">
             <div id="error-container"></div>
