@@ -152,8 +152,8 @@
     .turquoise-panel {
         background: rgba(79, 143, 136, 0.53);
         border-radius: 0;
-        margin: -3rem -1.5rem 0 -1.5rem;
-        padding: 3rem 1.5rem 2.5rem;
+        margin: -3rem -1.5rem -5rem -1.5rem;
+        padding: 3rem 1.5rem 7.5rem;
     }
 
     .progress {
@@ -173,13 +173,13 @@
         width: 28px;
         height: 28px;
         border-radius: 50%;
-        border: 1.5px solid #d0ccc4;
+        border: 1.5px solid rgba(255, 255, 255, 0.8);
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 12px;
-        font-weight: 500;
-        color: #1c1a16;
+        font-weight: 600;
+        color: #ffffff;
         flex-shrink: 0;
         transition: all 0.3s;
     }
@@ -198,19 +198,20 @@
 
     .step-label {
         font-size: 12px;
-        color: #1c1a16;
+        color: #ffffff;
+        font-weight: 500;
         transition: color 0.3s;
     }
 
     .step-label.active {
-        color: var(--green-mid);
-        font-weight: 500;
+        color: #ffffff;
+        font-weight: 700;
     }
 
     .step-divider {
         flex: 1;
         height: 1px;
-        background: #e0ddd6;
+        background: rgba(255, 255, 255, 0.6);
         margin: 0 4px;
     }
 
@@ -876,7 +877,7 @@
 
     footer {
         background: var(--green-mid);
-        color: rgba(255, 255, 255, 0.5);
+        color: rgba(255, 255, 255, 0.95);
         text-align: center;
         padding: 2rem;
         font-size: 12px;
