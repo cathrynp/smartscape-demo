@@ -16,7 +16,7 @@ exports.handler = async function(event) {
 
     const requestBody = {
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 800,
+      max_tokens: 3500,
       messages: incoming.messages
     };
 
