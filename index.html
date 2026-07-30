@@ -1479,7 +1479,7 @@
                     <div class="cta-roadmap-item">Seasonal maintenance subscription — quarterly guidance to keep your Climate Retrofit thriving</div>
                 </div>
             </div>
-            <div class="disclaimer">SmartScape's native plant recommendations are shaped and directed by real native-plant expertise, powered by Claude AI — trained on the USDA PLANTS Database, the Native American Ethnobotany Database, iNaturalist, university extension research, and peer-reviewed botanical literature. Recommendations are for informational purposes only. Your local nursery can confirm availability and answer any site-specific questions. Nursery data compiled from PlantNative.org, Native Plant Trust, Lady Bird Johnson Wildflower Center, Wild Ones Native Plant Nursery Finder, Grow Native Massachusetts, Calscape, Pollinator Pathway NW, Native Plants Hawaii, and regional conservation districts. All nurseries listed specialize in or carry native plants for their region. A note on AI's footprint: a single Greenprint uses roughly the energy and water of a couple Google searches — small on its own. AI's aggregate water and energy use at data-center scale is a real, valid concern. Every yard a Greenprint helps convert to natives can cut water use 60-80%, reduce pesticide/fertilizer runoff, and create pollinator habitat. SmartScape prototype — May 2026.</div>
+            <div class="disclaimer">SmartScape's native plant recommendations are shaped and directed by real, human native-plant expertise, and powered by Claude AI — trained on the USDA PLANTS Database, the Native American Ethnobotany Database, iNaturalist, university extension research, and peer-reviewed botanical literature. Your local nursery is a great resource too — they can confirm current availability, answer any site-specific questions, and offer the kind of in-depth planting and growth guidance that comes from real hands-on plant expertise. Nursery data is compiled from PlantNative.org, Native Plant Trust, Lady Bird Johnson Wildflower Center, Wild Ones Native Plant Nursery Finder, Grow Native Massachusetts, Calscape, Pollinator Pathway NW, Native Plants Hawaii, and regional conservation districts. All nurseries listed specialize in or carry native plants for their region. A note on AI's footprint: a single Greenprint uses roughly the energy and water of a couple Google searches — small on its own. AI's aggregate water and energy use at data-center scale is a real, valid concern. Every yard a Greenprint helps convert to natives can cut water use 60-80%, reduce pesticide/fertilizer runoff, and create pollinator habitat. SmartScape Demo — August 2026.</div>
             <button class="btn-ghost" onclick="restart()">↺ Start a new Greenprint</button>
             <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" class="btn-primary" style="display:inline-block;margin-top:14px;">Buy the full app — $9.99</a>
         </div>
@@ -2874,6 +2874,7 @@
         var elevationEl = document.getElementById('elevation');
         var elevation = elevationEl ? elevationEl.value : '';
         var elevationLine = elevation ? '- Elevation: ' + elevationEl.options[elevationEl.selectedIndex].text + '\n' : '';
+        var elevationText = elevationEl ? elevationEl.options[elevationEl.selectedIndex].text : '';
         var ecoregion = getEcoregion(zip);
         var hawaiiInstructions = '';
         if (ecoregion && ecoregion.toLowerCase().indexOf('hawaii') !== -1) {
@@ -2929,7 +2930,7 @@
             var pt = text.match(/PLANTING TIMELINE:\n([\s\S]*?)(?=SPECIES COUNT:|$)/);
             var sc = text.match(/SPECIES COUNT:\s*(\d+)/);
             document.getElementById('r-title').textContent = 'Greenprint · Zip ' + zip;
-            document.getElementById('r-sub').textContent = 'Your native plant plan for ' + sun + ' · ' + sizeLabel + ' · Goals: ' + goals;
+            document.getElementById('r-sub').textContent = 'Your native plant plan for ' + sun + ' · ' + sizeLabel + (elevationText ? ' · ' + elevationText : '') + ' · Goals: ' + goals;
             document.getElementById('r-rec-sub').textContent = 'Native plants matched to zip ' + zip + ' and your goals';
             document.getElementById('r-layout-sub').textContent = 'Suggested planting arrangement · ' + sizeLabel;
             document.getElementById('r-site').textContent = sa ? sa[1].trim() : 'Site analysis complete.';
