@@ -1213,7 +1213,7 @@
         Try the Demo
         <span class="arrow-down">&#8595;</span>
       </span>
-      <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" class="action-link-secondary">Buy the app — $9.99</a>
+      <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" class="action-link-secondary">Buy the app — $4.99</a>
     </div>
   </div>
 </section>
@@ -1391,7 +1391,7 @@
                     </div>
                 </div>
             </div>
-            <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" class="btn-primary" style="display:inline-block;margin-top:18px;">Buy Greenprint Generator — $9.99 →</a>
+            <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" class="btn-primary" style="display:inline-block;margin-top:18px;">Buy Greenprint Generator — $4.99 →</a>
         </div>
         </div>
         <div class="screen" id="s3">
@@ -1477,7 +1477,7 @@
             </div>
             <div class="disclaimer">SmartScape's native plant recommendations are shaped and directed by real, human expertise in ecology and native-plant science, and powered by Claude AI — trained on the USDA PLANTS Database, the Native American Ethnobotany Database, iNaturalist, university extension research, and peer-reviewed botanical literature. Your local nursery is a great resource too — they can confirm current availability, answer any site-specific questions, and offer the kind of in-depth planting and growth guidance that comes from real hands-on plant expertise. Nursery data is compiled from PlantNative.org, Native Plant Trust, Lady Bird Johnson Wildflower Center, Wild Ones Native Plant Nursery Finder, Grow Native Massachusetts, Calscape, Pollinator Pathway NW, Native Plants Hawaii, and regional conservation districts. All nurseries listed specialize in or carry native plants for their region. A note on AI's footprint: a single Greenprint uses roughly the energy and water of a couple Google searches — small on its own. AI's aggregate water and energy use at data-center scale is a real, valid concern. Every yard a Greenprint helps convert to natives can cut water use 60-80%, reduce pesticide/fertilizer runoff, and create pollinator habitat. SmartScape Demo — August 2026.</div>
             <button class="btn-ghost" onclick="restart()">↺ Start a new Greenprint</button>
-            <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" class="btn-primary" style="display:inline-block;margin-top:14px;">Buy the full app — $9.99</a>
+            <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" class="btn-primary" style="display:inline-block;margin-top:14px;">Buy the full app — $4.99</a>
         </div>
     </main>
     <footer>
@@ -2472,7 +2472,7 @@
             html += shown.map(renderRow).join('');
         }
         if (remaining > 0) {
-            html += '<div style="padding:14px 4px 4px;color:#1c1a16;font-style:italic;font-size:14px;">+ ' + remaining + ' more native nurseries near you. Want your own full Greenprint? <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" style="color:#2d6a1f;font-weight:500;">Get the app for $9.99</a></div>';
+            html += '<div style="padding:14px 4px 4px;color:#1c1a16;font-style:italic;font-size:14px;">+ ' + remaining + ' more native nurseries near you. Want your own full Greenprint? <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" style="color:#2d6a1f;font-weight:500;">Get the app for $4.99</a></div>';
         }
         if (!html)
             html = '<p style="font-size:13px;color:#1c1a16;">No results — try "All".</p>';
@@ -2926,7 +2926,7 @@
             var pt = text.match(/PLANTING TIMELINE:\n([\s\S]*?)(?=SPECIES COUNT:|$)/);
             var sc = text.match(/SPECIES COUNT:\s*(\d+)/);
             document.getElementById('r-title').textContent = 'Greenprint · Zip ' + zip;
-            document.getElementById('r-sub').textContent = 'Your native plant plan for ' + sun + ' · ' + sizeLabel + (elevationText ? ' · ' + elevationText : '') + ' · Goals: ' + goals;
+            document.getElementById('r-sub').textContent = 'Your native plant plan for ' + sun + ' · ' + sizeLabel + (elevationText ? ' · Elevation: ' + elevationText : '') + ' · Goals: ' + goals;
             document.getElementById('r-rec-sub').textContent = 'Native plants matched to zip ' + zip + ' and your goals';
             document.getElementById('r-layout-sub').textContent = 'Suggested planting arrangement · ' + sizeLabel;
             document.getElementById('r-site').textContent = sa ? sa[1].trim() : 'Site analysis complete.';
@@ -2972,13 +2972,13 @@
                     }
                 });
                 if (totalPlants > shown) {
-                    plantsHtml += '<div style="padding:14px 0 4px;color:#1c1a16;font-style:italic;">+ ' + (totalPlants - shown) + ' more native plants and trees matched to your site. Want your own full Greenprint? <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" style="color:#2d6a1f;font-weight:500;">Get the app for $9.99</a></div>';
+                    plantsHtml += '<div style="padding:14px 0 4px;color:#1c1a16;font-style:italic;">+ ' + (totalPlants - shown) + ' more native plants and trees matched to your site. Want your own full Greenprint? <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" style="color:#2d6a1f;font-weight:500;">Get the app for $4.99</a></div>';
                 }
                 document.getElementById('r-plants').innerHTML = plantsHtml;
             } else {
                 document.getElementById('r-plants').textContent = text;
             }
-            document.getElementById('r-time').innerHTML = '<div style="padding:10px 0;color:#1c1a16;">The paid app includes a full 12-month, step-by-step planting &amp; maintenance calendar tailored to your site. Want your own full Greenprint? <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" style="color:#2d6a1f;font-weight:500;">Get the app for $9.99</a></div>';
+            document.getElementById('r-time').innerHTML = '<div style="padding:10px 0;color:#1c1a16;">The paid app includes a full 12-month, step-by-step planting &amp; maintenance calendar tailored to your site. Want your own full Greenprint? <a href="https://smartscape.gumroad.com/l/greenprint" target="_blank" style="color:#2d6a1f;font-weight:500;">Get the app for $4.99</a></div>';
             document.getElementById('r-count').innerHTML = rp ? shown + ' <span style="font-size:15px;font-weight:400;opacity:.65;">of ' + totalPlants + '</span>' : (sc ? sc[1] : '6');
             if (rp) {
                 var plants = parsePlants(rp[1]);
