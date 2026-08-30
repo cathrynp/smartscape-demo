@@ -1525,938 +1525,249 @@
         }
     };
     var NURSERIES = [
-    {
-        name: "Sparrowhawk Native Plants",
-        city: "Portland",
-        state: "OR",
-        region: "or-portland",
-        url: "https://sparrowhawknativeplants.com",
-        desc: "Women-owned. Online ordering + pop-up sales. 100% native PNW plants.",
-        tags: ["retail", "online"]
-    },
-    {
-        name: "Bosky Dell Natives",
-        city: "West Linn",
-        state: "OR",
-        region: "or-portland",
-        url: "https://boskydellnatives.com",
-        desc: "Wildflowers, ferns, bulbs, shrubs & trees native to the Pacific NW.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "Portland Nursery",
-        city: "Portland",
-        state: "OR",
-        region: "or-portland",
-        url: "https://portlandnursery.com",
-        desc: "Two urban locations. Native trees, shrubs, and smaller plants year-round.",
-        tags: ["retail"]
-    },
-    {
-        name: "Alder View Natives",
-        city: "Wilsonville",
-        state: "OR",
-        region: "or-portland",
-        url: "https://plantnative.org/nd_or.htm",
-        desc: "Wide variety of natives. Retail and wholesale. Located in Wilsonville.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "Scholls Valley Native Nursery",
-        city: "Forest Grove",
-        state: "OR",
-        region: "or-portland",
-        url: "https://schollsvalley.com",
-        desc: "Containerized and bare-root natives for locally-adapted landscapes.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "Echo Valley Natives",
-        city: "Oregon City",
-        state: "OR",
-        region: "or-portland",
-        url: "https://echovalleynatives.com",
-        desc: "Retail and wholesale PNW native plants for western Oregon.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "Champoeg Nursery",
-        city: "Aurora",
-        state: "OR",
-        region: "or-willamette",
-        url: "https://champoegnursery.com",
-        desc: "Herbaceous perennial, wetland and woody plants native to the Pacific NW.",
-        tags: ["wholesale", "wetland"]
-    },
-    {
-        name: "Aurora Nursery",
-        city: "Aurora",
-        state: "OR",
-        region: "or-willamette",
-        url: "https://auroranursery.com",
-        desc: "50 acres of Willamette soil. Native and wetland plant specialist.",
-        tags: ["wholesale"]
-    },
-    {
-        name: "Sevenoaks Native Nursery",
-        city: "Albany",
-        state: "OR",
-        region: "or-willamette",
-        url: "https://sevenoaksnativenursery.com",
-        desc: "Native plants for restoration, landscaping, and conservation.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "Heritage Seedlings",
-        city: "Salem",
-        state: "OR",
-        region: "or-willamette",
-        url: "https://heritageseedlings.com",
-        desc: "Willamette Valley prairie natives — grasses, sedges, forbs. Plugs and seed.",
-        tags: ["wholesale", "seed"]
-    },
-    {
-        name: "Humble Roots Nursery",
-        city: "Hood River",
-        state: "OR",
-        region: "or-gorge",
-        url: "https://humblerootsnursery.com",
-        desc: "Ethically propagated PNW natives. Columbia Gorge and drought-tolerant species.",
-        tags: ["retail"]
-    },
-    {
-        name: "Cloud Mountain Farm Center",
-        city: "Everson",
-        state: "WA",
-        region: "wa",
-        url: "https://cloudmountainfarmcenter.org",
-        desc: "Extensive PNW native plant selection. Retail and education.",
-        tags: ["retail"]
-    },
-    {
-        name: "Plantas Nativa",
-        city: "Bellingham",
-        state: "WA",
-        region: "wa",
-        url: "https://plantasnativa.com",
-        desc: "100% native. Specializes in plants native to the Pacific Northwest.",
-        tags: ["wholesale", "retail"]
-    },
-    {
-        name: "Nothing But NW Natives",
-        city: "Woodland",
-        state: "WA",
-        region: "wa",
-        url: "https://nothingbutnwnatives.com",
-        desc: "Wide variety of native plants for Washington and Oregon.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "Swansons Nursery",
-        city: "Seattle",
-        state: "WA",
-        region: "wa",
-        url: "https://swansonsnursery.com",
-        desc: "Retail nursery with extensive native plant selection.",
-        tags: ["retail"]
-    },
-    {
-        name: "Bay Natives",
-        city: "San Francisco",
-        state: "CA",
-        region: "ca-bay",
-        url: "https://baynatives.com",
-        desc: "Rare and endemic Bay Area natives. 100% native.",
-        tags: ["retail", "online"]
-    },
-    {
-        name: "Native Here Nursery",
-        city: "Berkeley",
-        state: "CA",
-        region: "ca-bay",
-        url: "https://nativeherenursery.org",
-        desc: "Plants native to Alameda and Contra Costa counties. Saturdays + online.",
-        tags: ["retail"]
-    },
-    {
-        name: "Yerba Buena Nursery",
-        city: "Half Moon Bay",
-        state: "CA",
-        region: "ca-bay",
-        url: "https://yerbabuenanursery.com",
-        desc: "California's oldest native plant retail nursery. 60+ years.",
-        tags: ["retail"]
-    },
-    {
-        name: "The Watershed Nursery",
-        city: "Richmond",
-        state: "CA",
-        region: "ca-bay",
-        url: "https://watershednursery.com",
-        desc: "CA native plants. Bay Area delivery. Wholesale available.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "California Flora Nursery",
-        city: "Fulton",
-        state: "CA",
-        region: "ca-sonoma",
-        url: "https://calfloranursery.com",
-        desc: "100% devoted to natives. Sonoma focus. Pollinator-friendly, low-water, fire-safe.",
-        tags: ["retail"]
-    },
-    {
-        name: "Sonoma Ecology Center Native Plant Nursery",
-        city: "Sonoma",
-        state: "CA",
-        region: "ca-sonoma",
-        url: "https://sonomaecologycenter.org/nativeplantnursery",
-        desc: "Native plants at Sonoma Garden Park. Fridays and by appointment.",
-        tags: ["retail"]
-    },
-    {
-        name: "Mostly Natives Nursery",
-        city: "Point Reyes Station",
-        state: "CA",
-        region: "ca-sonoma",
-        url: "https://mostlynatives.com",
-        desc: "Native and drought-tolerant plants for northern California.",
-        tags: ["retail"]
-    },
-    {
-        name: "Desert Survivors Nursery",
-        city: "Tucson",
-        state: "AZ",
-        region: "az",
-        url: "https://desertsurvivors.org",
-        desc: "Non-profit. Extensive desert native selection. Tucson's premier source.",
-        tags: ["retail", "nonprofit"]
-    },
-    {
-        name: "Spadefoot Nursery",
-        city: "Tucson",
-        state: "AZ",
-        region: "az",
-        url: "https://spadefootnursery.com",
-        desc: "100% native. Locally grown Sonoran Desert plants. Retail pickup Fri–Sun.",
-        tags: ["retail"]
-    },
-    {
-        name: "Flagstaff Native Plant & Seed",
-        city: "Flagstaff",
-        state: "AZ",
-        region: "az",
-        url: "https://nativeplantandseed.com",
-        desc: "Plants and seeds native to Northern Arizona, grown from local seed.",
-        tags: ["retail", "seed"]
-    },
-    {
-        name: "Borderlands Native Plants & Seeds",
-        city: "Patagonia",
-        state: "AZ",
-        region: "az",
-        url: "https://borderlandsplants.org",
-        desc: "Pollinator-safe, chemical-free SE Arizona natives.",
-        tags: ["retail", "seed"]
-    },
-    {
-        name: "Native Seeds/SEARCH",
-        city: "Tucson",
-        state: "AZ",
-        region: "az",
-        url: "https://nativeseeds.org",
-        desc: "350+ varieties of heirloom seeds from traditional crops of the SW US.",
-        tags: ["seed", "nonprofit"]
-    },
-    {
-        name: "Arizona Native Plant Society",
-        city: "Statewide",
-        state: "AZ",
-        region: "az",
-        url: "https://aznps.com",
-        desc: "Hosts seasonal native plant sales in Phoenix, Tucson, and Flagstaff.",
-        tags: ["resource", "events"]
-    },
-    {
-        name: "Michiganense Natives",
-        city: "Plymouth",
-        state: "MI",
-        region: "mi",
-        url: "https://michiganensenatives.com",
-        desc: "Metro Detroit's retail native nursery. 250+ MI species. Pesticide-free.",
-        tags: ["retail"]
-    },
-    {
-        name: "Detroit Wildflower Nursery",
-        city: "Farmington Hills",
-        state: "MI",
-        region: "mi",
-        url: "https://detroitwildflowers.com",
-        desc: "Organic, pesticide-free wildflowers native to Michigan and the Great Lakes.",
-        tags: ["retail"]
-    },
-    {
-        name: "New Leaf Natives",
-        city: "Manchester",
-        state: "MI",
-        region: "mi",
-        url: "https://newleafnatives.com",
-        desc: "300+ native species. Mail-order shipping available.",
-        tags: ["retail", "wholesale", "ships"]
-    },
-    {
-        name: "Windy Rock Farm & Nursery",
-        city: "Manchester",
-        state: "MI",
-        region: "mi",
-        url: "https://windyrocknursery.com",
-        desc: "Fully retail. 80+ varieties of native perennials and shrubs.",
-        tags: ["retail"]
-    },
-    {
-        name: "Michigan Wildflower Farm",
-        city: "Portland",
-        state: "MI",
-        region: "mi",
-        url: "https://michiganwildflowerfarm.com",
-        desc: "Michigan genotype natives since 1996. Trees, shrubs, grasses, wildflowers.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "Feral Flora",
-        city: "Ann Arbor",
-        state: "MI",
-        region: "mi",
-        url: "https://feral-flora.com",
-        desc: "Michigan-native plants from wild-collected seed. Online sales.",
-        tags: ["retail", "online"]
-    },
-    {
-        name: "Lynette's Native Plants",
-        city: "Greensboro Bend",
-        state: "VT",
-        region: "vt",
-        url: "https://plantnative.org/nd_patova.htm",
-        desc: "Vermont native plant nursery. Retail. Northeastern native species.",
-        tags: ["retail"]
-    },
-    {
-        name: "Project Native",
-        city: "Housatonic",
-        state: "MA",
-        region: "vt",
-        url: "https://projectnative.org",
-        desc: "Non-profit. 170+ varieties native to W. Massachusetts, E. New York, NW Connecticut, S. Vermont. Ships.",
-        tags: ["retail", "nonprofit", "ships"]
-    },
-    {
-        name: "New England Wild Flower Society",
-        city: "Framingham",
-        state: "MA",
-        region: "vt",
-        url: "https://newenglandwild.org",
-        desc: "America's oldest plant conservation org. Plant sales and expert resources.",
-        tags: ["retail", "resource", "events"]
-    },
-    {
-        name: "Burnt Meadow Nursery",
-        city: "Brownfield",
-        state: "ME",
-        region: "vt",
-        url: "https://burntmeadow.com",
-        desc: "100% native woody plants native to New England. Wholesale.",
-        tags: ["wholesale"]
-    },
-    {
-        name: "Ānuenue Native Plants",
-        city: "Kauai",
-        state: "HI",
-        region: "hi",
-        url: "https://anuenuenativeplants.com",
-        desc: "Kauai-based. 100% native Hawaiian plants. Pickup and on-island delivery.",
-        tags: ["retail"]
-    },
-    {
-        name: "Kauai Nursery & Landscaping",
-        city: "Lihue",
-        state: "HI",
-        region: "hi",
-        url: "https://kauainursery.com",
-        desc: "Kauai's largest nursery including native Hawaiian plants. 45+ years.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "Hui Ku Maoli Ola",
-        city: "Kaneohe, Oahu",
-        state: "HI",
-        region: "hi",
-        url: "https://nativeplants.hawaii.edu",
-        desc: "100+ native Hawaiian species. Home gardens to large restoration projects.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "Hawaii DLNR State Tree Nursery",
-        city: "Statewide",
-        state: "HI",
-        region: "hi",
-        url: "https://dlnr.hawaii.gov/forestry/info/nurseries",
-        desc: "Native and endangered Hawaiian plants available to the public.",
-        tags: ["retail", "resource"]
-    },
-    {
-        name: "Prairie Moon Nursery",
-        city: "Winona",
-        state: "MN",
-        region: "national",
-        url: "https://prairiemoon.com",
-        desc: "Ships nationwide. 600+ native species — seeds, plugs, and plants for every US region.",
-        tags: ["ships", "seed"]
-    },
-    {
-        name: "American Meadows",
-        city: "Williston",
-        state: "VT",
-        region: "national",
-        url: "https://americanmeadows.com",
-        desc: "Ships nationwide. Native wildflower seeds and plants for every US climate zone.",
-        tags: ["ships", "seed"]
-    },
-    {
-        name: "PlantNative.org Directory",
-        city: "National",
-        state: "US",
-        region: "national",
-        url: "https://plantnative.org/national_nursery_dir_main.htm",
-        desc: "871+ native plant nurseries searchable by state. The most comprehensive national directory.",
-        tags: ["resource", "directory"]
-    },
-    {
-        name: "Prairie Nursery",
-        city: "Westfield",
-        state: "WI",
-        region: "national",
-        url: "https://prairienursery.com",
-        desc: "Ships nationwide. High-quality native plants and seeds for prairies, woodlands, and wetlands.",
-        tags: ["ships", "seed"]
-    },
-    {
-        name: "Wild Ones Native Plant Nursery Finder",
-        city: "National",
-        state: "US",
-        region: "national",
-        url: "https://nativegardendesigns.wildones.org/nursery-list",
-        desc: "State-by-state directory of nurseries endorsed by Wild Ones as trustworthy native plant sources.",
-        tags: ["resource", "directory"]
-    },
-    {
-        name: "Eco Blossom Nursery",
-        city: "Fort Worth",
-        state: "TX",
-        region: "tx",
-        url: "https://ecoblossom.com",
-        desc: "Woman-owned. 100% Texas native plants, neonic-free. 5% of sales to TX environmental nonprofits. Online ordering + pickup.",
-        tags: ["retail", "online"]
-    },
-    {
-        name: "Hill Country Natives",
-        city: "Leander",
-        state: "TX",
-        region: "tx",
-        url: "https://hillcountrynatives.com",
-        desc: "Native trees, shrubs and perennials of the Texas Hill Country. Specializes in smaller ornamental trees.",
-        tags: ["retail"]
-    },
-    {
-        name: "Natives of Texas",
-        city: "Kerrville",
-        state: "TX",
-        region: "tx",
-        url: "https://nativesoftexas.com",
-        desc: "Deals exclusively in plants native to the Texas Hill Country. Extensive perennials, shrubs, and trees.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "Native Plant Society of Texas",
-        city: "Statewide",
-        state: "TX",
-        region: "tx",
-        url: "https://npsot.org",
-        desc: "Hosts regional native plant sales across Texas. Expert resource for TX-native species.",
-        tags: ["resource", "events"]
-    },
-    {
-        name: "Lady Bird Johnson Wildflower Center",
-        city: "Austin",
-        state: "TX",
-        region: "tx",
-        url: "https://wildflower.org",
-        desc: "The national authority on native plants. Plant sales, supplier directory, and expert resources.",
-        tags: ["retail", "resource"]
-    },
-    {
-        name: "Florida Native Plants Nursery",
-        city: "Sarasota",
-        state: "FL",
-        region: "fl",
-        url: "https://floridanativeplants.com",
-        desc: "Premier FL native plant nursery since 1995. Butterfly and wildlife plants, wildflowers, shrubs, trees, ferns.",
-        tags: ["retail"]
-    },
-    {
-        name: "Native Nurseries of Tallahassee",
-        city: "Tallahassee",
-        state: "FL",
-        region: "fl",
-        url: "https://nativenurseries.com",
-        desc: "100% native. Trees, shrubs, and wildflowers native to N. Florida. Also stocks native wildflower seed.",
-        tags: ["retail"]
-    },
-    {
-        name: "Wilcox Nursery & Landscape",
-        city: "Largo",
-        state: "FL",
-        region: "fl",
-        url: "https://wilcoxnursery.com",
-        desc: "Family business since 1941. Dedicated to Florida native plants and ecologically balanced landscapes.",
-        tags: ["retail"]
-    },
-    {
-        name: "Florida Native Plant Society",
-        city: "Statewide",
-        state: "FL",
-        region: "fl",
-        url: "https://fnps.org",
-        desc: "Statewide resource. Hosts native plant sales and events. Chapter sales across all Florida regions.",
-        tags: ["resource", "events"]
-    },
-    {
-        name: "Nearly Native Nursery",
-        city: "Fayetteville",
-        state: "GA",
-        region: "ga",
-        url: "https://nearlynativenursery.com",
-        desc: "Retail native plant nursery specializing in SE native species for wildlife habitat.",
-        tags: ["retail"]
-    },
-    {
-        name: "Flat Creek Natives",
-        city: "Perry",
-        state: "GA",
-        region: "ga",
-        url: "https://flatcreeknatives.com",
-        desc: "Georgia native plants for restoration and landscaping. Retail and wholesale.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "Carolina Native Nursery",
-        city: "Burnsville",
-        state: "NC",
-        region: "ga",
-        url: "https://carolinanativenursery.com",
-        desc: "Largest native azalea producer in the US. Broad selection of SE native plants.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "NC Native Plant Society",
-        city: "Statewide",
-        state: "NC",
-        region: "ga",
-        url: "https://ncwildflower.org/native-plant-nurseries",
-        desc: "Curated list of NC native plant nurseries. All sell nursery-propagated plants only.",
-        tags: ["resource", "directory"]
-    },
-    {
-        name: "Plum Creek Garden Market",
-        city: "Denver area",
-        state: "CO",
-        region: "co",
-        url: "https://plumcreekgardenmarket.com/natives",
-        desc: "Multiple Front Range pop-up locations. Large selection of Colorado native perennials and grasses.",
-        tags: ["retail"]
-    },
-    {
-        name: "Colorado Native Plant Society",
-        city: "Statewide",
-        state: "CO",
-        region: "co",
-        url: "https://conps.org",
-        desc: "Hosts native plant sales across Colorado. Expert resource for high-altitude and prairie natives.",
-        tags: ["resource", "events"]
-    },
-    {
-        name: "Blazing Star Nursery",
-        city: "Woodstock",
-        state: "IL",
-        region: "il",
-        url: "https://blazingstar.com",
-        desc: "Illinois native plants for prairies, woodlands, and wetlands. Retail and wholesale.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "Illinois Plants Native Nursery Directory",
-        city: "Statewide",
-        state: "IL",
-        region: "il",
-        url: "https://illinoisplants.org/native-plant-nurseries",
-        desc: "Comprehensive directory of Illinois native plant nurseries by region.",
-        tags: ["resource", "directory"]
-    },
-    {
-        name: "Sow Wild Natives",
-        city: "Kansas City",
-        state: "MO",
-        region: "ks",
-        url: "https://sowwildnatives.com",
-        desc: "Retail storefront in Kansas City. Native wildflowers and grasses, function and beauty.",
-        tags: ["retail"]
-    },
-    {
-        name: "City Roots Nursery",
-        city: "Kansas City",
-        state: "MO",
-        region: "ks",
-        url: "https://cityrootsnursery.com",
-        desc: "Native trees, shrubs and perennials of Missouri and Kansas. Two locations in KC metro.",
-        tags: ["retail"]
-    },
-    {
-        name: "Vinland Valley Nursery",
-        city: "Baldwin City",
-        state: "KS",
-        region: "ks",
-        url: "https://vinlandvalleynursery.com",
-        desc: "280+ native species, organic, pesticide-free. Butterfly gardening specialists.",
-        tags: ["retail"]
-    },
-    {
-        name: "Grow Native! Missouri",
-        city: "Statewide",
-        state: "MO",
-        region: "ks",
-        url: "https://grownative.org",
-        desc: "Searchable native plant database + seasonal native plant sales across Missouri.",
-        tags: ["resource", "events"]
-    },
-    {
-        name: "Prairie Restorations",
-        city: "Princeton",
-        state: "MN",
-        region: "mn",
-        url: "https://prairierestorations.com",
-        desc: "Native plants and seeds for prairies, woodlands, and wetlands. Retail and wholesale.",
-        tags: ["retail", "wholesale", "seed"]
-    },
-    {
-        name: "Landscape Alternatives",
-        city: "Shafer",
-        state: "MN",
-        region: "mn",
-        url: "https://landscapealternatives.org",
-        desc: "Minnesota native plants for home gardens and restoration. Retail nursery.",
-        tags: ["retail"]
-    },
-    {
-        name: "Ohio Prairie Nursery",
-        city: "Hiram",
-        state: "OH",
-        region: "oh",
-        url: "https://ohioprairie.com",
-        desc: "Native Ohio prairie and woodland plants. Ships within OH and surrounding states.",
-        tags: ["retail", "ships"]
-    },
-    {
-        name: "Leaves for Wildlife Native Plant Nursery",
-        city: "Sunbury",
-        state: "OH",
-        region: "oh",
-        url: "https://leaveswildlife.com",
-        desc: "Midwest native trees, shrubs, perennials, and spring ephemerals. Online shop and plant sales.",
-        tags: ["retail", "online"]
-    },
-    {
-        name: "Bowman's Hill Wildflower Preserve Nursery",
-        city: "New Hope",
-        state: "PA",
-        region: "pa",
-        url: "https://bhwp.org",
-        desc: "All native plants, many grown from seed on site. Expert staff. No shipping — visit in person.",
-        tags: ["retail"]
-    },
-    {
-        name: "North Creek Nurseries",
-        city: "Landenberg",
-        state: "PA",
-        region: "pa",
-        url: "https://northcreeknurseries.com",
-        desc: "Wholesale native plant propagation. Eastern US native perennials, grasses, ferns and shrubs.",
-        tags: ["wholesale"]
-    },
-    {
-        name: "Chesapeake Natives",
-        city: "Upper Marlboro",
-        state: "MD",
-        region: "pa",
-        url: "https://chesapeakenatives.com",
-        desc: "Native plants for the Mid-Atlantic region. Retail and wholesale.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "Native Plant Center at SUNY",
-        city: "Valhalla",
-        state: "NY",
-        region: "ny",
-        url: "https://www.sunywcc.edu/about/community-resources/the-native-plant-center/",
-        desc: "Native plants of the Northeast. Annual plant sale, expert resources, and regional plant lists.",
-        tags: ["retail", "resource", "events"]
-    },
-    {
-        name: "Pinelands Nursery",
-        city: "Columbus",
-        state: "NJ",
-        region: "ny",
-        url: "https://pinelandsnursery.com",
-        desc: "Ships native plants nationwide. Specializes in Mid-Atlantic and Northeast natives.",
-        tags: ["wholesale", "ships"]
-    },
-    {
-        name: "Tennessee Naturescapes",
-        city: "Tennessee",
-        state: "TN",
-        region: "tn",
-        url: "https://tennesseenaturescapes.com",
-        desc: "Native trees, shrubs, wildflowers, ferns and grasses. Retail and mail order.",
-        tags: ["retail", "ships"]
-    },
-    {
-        name: "GroWild Inc.",
-        city: "Fairview",
-        state: "TN",
-        region: "tn",
-        url: "https://growildinc.com",
-        desc: "1,000+ native species. One of the leading native plant nurseries in the eastern US. By appointment.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "Petals From the Past",
-        city: "Jemison",
-        state: "AL",
-        region: "tn",
-        url: "https://petalsfromthepast.com",
-        desc: "Alabama native plants. Retail nursery with excellent regional selection.",
-        tags: ["retail"]
-    },
-    {
-        name: "Carolina Wild",
-        city: "Anderson",
-        state: "SC",
-        region: "tn",
-        url: "https://carolinawild.com",
-        desc: "South Carolina native plants for home gardens and habitat restoration.",
-        tags: ["retail"]
-    },
-    {
-        name: "Great Basin Natives",
-        city: "Holden",
-        state: "UT",
-        region: "ut",
-        url: "https://greatbasinnatives.com",
-        desc: "Rocky Mountain native perennials, shrubs, trees. Retail, wholesale, mail order.",
-        tags: ["retail", "wholesale", "ships"]
-    },
-    {
-        name: "Center for Native Plants",
-        city: "Whitefish",
-        state: "MT",
-        region: "mt",
-        url: "https://centerfornativeplants.com",
-        desc: "Flathead Valley's only retail native plant nursery. 200+ species native to Montana and Intermountain NW.",
-        tags: ["retail"]
-    },
-    {
-        name: "Great Bear Native Plants",
-        city: "Hamilton",
-        state: "MT",
-        region: "mt",
-        url: "https://greatbearnativeplants.com",
-        desc: "High quality containerized plants native to Western North America. Retail, wholesale, and shipping.",
-        tags: ["retail", "wholesale", "ships"]
-    },
-    {
-        name: "Plants of the Southwest",
-        city: "Albuquerque",
-        state: "NM",
-        region: "nm",
-        url: "https://plantsofthesouthwest.com",
-        desc: "Native plants and seeds for the desert Southwest. 40+ years of regional expertise. Mail order.",
-        tags: ["retail", "seed", "ships"]
-    },
-    {
-        name: "Nebraska Statewide Arboretum",
-        city: "Lincoln",
-        state: "NE",
-        region: "ne",
-        url: "https://plantnebraska.org",
-        desc: "Native trees, shrubs, grasses and perennials adapted to the Great Plains. Online store.",
-        tags: ["retail", "online"]
-    },
-    {
-        name: "Prairie Plains Resource Institute",
-        city: "Aurora",
-        state: "NE",
-        region: "ne",
-        url: "https://prairieplains.org",
-        desc: "Local ecotype seed and plants for prairie restoration. Nebraska and Great Plains focus.",
-        tags: ["retail", "seed"]
-    },
-    {
-        name: "Johnson's Nursery",
-        city: "Menomonee Falls",
-        state: "WI",
-        region: "wi",
-        url: "https://johnsonsnursery.com",
-        desc: "Many natives grown from wild-collected local seed. Wide array of trees, shrubs and perennials.",
-        tags: ["retail", "wholesale"]
-    },
-    {
-        name: "Two Ferns Native Nursery",
-        city: "Madison",
-        state: "WI",
-        region: "wi",
-        url: "https://twofernsnativenursery.com",
-        desc: "Woman-owned. Diverse native perennials. Online shop and pickup.",
-        tags: ["retail", "online"]
-    },
-    {
-        name: "Earth Tones Native Plants",
-        city: "Woodbury",
-        state: "CT",
-        region: "ct",
-        url: "https://earthtonesnativeplants.com",
-        desc: "Connecticut native plants. Strong pollinator and woodland plant selection.",
-        tags: ["retail"]
-    },
-    {
-        name: "Izel Native Plants",
-        city: "Online",
-        state: "US",
-        region: "va",
-        url: "https://izelplants.com",
-        desc: "Online aggregator of multiple native plant nurseries. Mid-Atlantic and beyond. Ships nationwide.",
-        tags: ["retail", "online", "ships"]
-    },
-    {
-        name: "Garden for Wildlife",
-        city: "National",
-        state: "US",
-        region: "national",
-        url: "https://gardenforwildlife.com",
-        desc: "Ships native plants to all 50 states organized by state — enter your state for region-specific species.",
-        tags: ["ships", "online"]
-    },
+    {name:"Sparrowhawk Native Plants",city:"Portland",state:"OR",lat:45.52,lng:-122.68,regions:["or-portland"],url:"https://sparrowhawknativeplants.com",desc:"Women-owned. Online ordering + pop-up sales. 100% native PNW plants.",tags:["retail","online"]},
+    {name:"Bosky Dell Natives",city:"West Linn",state:"OR",lat:45.36,lng:-122.64,regions:["or-portland"],url:"https://boskydellnatives.com",desc:"Wildflowers, ferns, bulbs, shrubs & trees native to the Pacific NW.",tags:["retail","wholesale"]},
+    {name:"Portland Nursery",city:"Portland",state:"OR",lat:45.52,lng:-122.68,regions:["or-portland"],url:"https://portlandnursery.com",desc:"Two urban locations. Native trees, shrubs, and smaller plants year-round.",tags:["retail"]},
+    {name:"Alder View Natives",city:"Wilsonville",state:"OR",lat:45.30,lng:-122.77,regions:["or-portland"],url:"https://plantnative.org/nd_or.htm",desc:"Wide variety of natives. Retail and wholesale. Located in Wilsonville.",tags:["retail","wholesale"]},
+    {name:"Scholls Valley Native Nursery",city:"Forest Grove",state:"OR",lat:45.52,lng:-123.11,regions:["or-portland"],url:"https://schollsvalley.com",desc:"Containerized and bare-root natives for locally-adapted landscapes.",tags:["retail","wholesale"]},
+    {name:"Echo Valley Natives",city:"Oregon City",state:"OR",lat:45.36,lng:-122.61,regions:["or-portland"],url:"https://echovalleynatives.com",desc:"Retail and wholesale PNW native plants for western Oregon.",tags:["retail","wholesale"]},
+    {name:"Champoeg Nursery",city:"Aurora",state:"OR",lat:45.23,lng:-122.76,regions:["or-willamette"],url:"https://champoegnursery.com",desc:"Herbaceous perennial, wetland and woody plants native to the Pacific NW.",tags:["wholesale","wetland"]},
+    {name:"Aurora Nursery",city:"Aurora",state:"OR",lat:45.23,lng:-122.76,regions:["or-willamette"],url:"https://auroranursery.com",desc:"50 acres of Willamette soil. Native and wetland plant specialist.",tags:["wholesale"]},
+    {name:"Sevenoaks Native Nursery",city:"Albany",state:"OR",lat:44.63,lng:-123.10,regions:["or-willamette"],url:"https://sevenoaksnativenursery.com",desc:"Native plants for restoration, landscaping, and conservation.",tags:["retail","wholesale"]},
+    {name:"Heritage Seedlings",city:"Salem",state:"OR",lat:44.94,lng:-123.03,regions:["or-willamette"],url:"https://heritageseedlings.com",desc:"Willamette Valley prairie natives — grasses, sedges, forbs. Plugs and seed.",tags:["wholesale","seed"]},
+    {name:"Humble Roots Nursery",city:"Hood River",state:"OR",lat:45.71,lng:-121.52,regions:["or-gorge"],url:"https://humblerootsnursery.com",desc:"Ethically propagated PNW natives. Columbia Gorge and drought-tolerant species.",tags:["retail"]},
+    {name:"Plant Oregon",city:"Talent",state:"OR",lat:42.25,lng:-122.79,regions:["or-southern"],url:"https://plantoregon.com",desc:"Specimen-sized native trees and shrubs grown in full sun in Southern Oregon. 100% native, high transplant success.",tags:["retail","wholesale"]},
+    {name:"Cornucopia Acres",city:"Grants Pass",state:"OR",lat:42.44,lng:-123.33,regions:["or-southern"],url:"https://cornucopiaacres.com",desc:"100% native plants and seed mixes for Southern Oregon and the Rogue Valley.",tags:["retail","seed"]},
+    {name:"Siskiyou Rare Plant Nursery",city:"Medford",state:"OR",lat:42.33,lng:-122.87,regions:["or-southern"],url:"https://siskiyourareplantnursery.com",desc:"Rare and unusual plants of the Siskiyou and Cascade ranges. SW Oregon specialists.",tags:["retail","ships"]},
+    {name:"Oregon Department of Forestry Native Nursery",city:"Statewide",state:"OR",lat:44.94,lng:-123.03,regions:["or-southern"],url:"https://www.oregon.gov/odf/forestbenefits/pages/nursery.aspx",desc:"Native seedlings for restoration across Oregon. Contact for availability.",tags:["resource"]},
+    {name:"Silver Falls Seed Company",city:"Silverton",state:"OR",lat:44.99,lng:-122.71,regions:["or-portland","or-willamette"],url:"https://silverfallsseed.com",desc:"Sixth-generation family farm selling Northwest native wildflower and grass seed direct from their own fields.",tags:["retail","ships","seed"]},
+    {name:"Tadpole Haven Native Plants",city:"Western Washington",state:"WA",lat:47.50,lng:-122.50,regions:["wa"],url:"https://tadpolehaven.com",desc:"Over 100 species native to Western Washington. Open by appointment.",tags:["retail"]},
+    {name:"Bayview Garden",city:"Whidbey Island",state:"WA",lat:48.17,lng:-122.58,regions:["wa"],url:"https://bayviewgarden.com",desc:"Large nursery on Whidbey Island growing native plants for over 30 years. Neonic-free.",tags:["retail"]},
+    {name:"Cloud Mountain Farm Center",city:"Everson",state:"WA",lat:48.91,lng:-122.35,regions:["wa"],url:"https://cloudmountainfarmcenter.org",desc:"Extensive PNW native plant selection. Retail and education.",tags:["retail"]},
+    {name:"Plantas Nativa",city:"Bellingham",state:"WA",lat:48.75,lng:-122.48,regions:["wa"],url:"https://plantasnativa.com",desc:"100% native. Specializes in plants native to the Pacific Northwest.",tags:["wholesale","retail"]},
+    {name:"Nothing But NW Natives",city:"Woodland",state:"WA",lat:45.91,lng:-122.75,regions:["wa","or-portland"],url:"https://nothingbutnwnatives.com",desc:"Wide variety of native plants for Washington and Oregon.",tags:["retail","wholesale"]},
+    {name:"Swansons Nursery",city:"Seattle",state:"WA",lat:47.61,lng:-122.33,regions:["wa"],url:"https://swansonsnursery.com",desc:"Retail nursery with extensive native plant selection.",tags:["retail"]},
+    {name:"Bay Natives",city:"San Francisco",state:"CA",lat:37.77,lng:-122.42,regions:["ca-bay"],url:"https://baynatives.com",desc:"Rare and endemic Bay Area natives. 100% native.",tags:["retail","online"]},
+    {name:"Larner Seeds",city:"Bolinas",state:"CA",lat:37.91,lng:-122.68,regions:["ca-bay","ca-sonoma"],url:"https://larnerseeds.com",desc:"Family-run since 1977. California native wildflower, grass, shrub, and tree seed, geared toward home gardeners doing backyard restoration.",tags:["retail","seed"]},
+    {name:"Native Here Nursery",city:"Berkeley",state:"CA",lat:37.87,lng:-122.27,regions:["ca-bay"],url:"https://nativeherenursery.org",desc:"Plants native to Alameda and Contra Costa counties. Saturdays + online.",tags:["retail"]},
+    {name:"Yerba Buena Nursery",city:"Half Moon Bay",state:"CA",lat:37.46,lng:-122.43,regions:["ca-bay"],url:"https://yerbabuenanursery.com",desc:"California's oldest native plant retail nursery. 60+ years.",tags:["retail"]},
+    {name:"The Watershed Nursery",city:"Richmond",state:"CA",lat:37.94,lng:-122.35,regions:["ca-bay"],url:"https://watershednursery.com",desc:"CA native plants. Bay Area delivery. Wholesale available.",tags:["retail","wholesale"]},
+    {name:"California Flora Nursery",city:"Fulton",state:"CA",lat:38.49,lng:-122.73,regions:["ca-sonoma"],url:"https://calfloranursery.com",desc:"100% devoted to natives. Sonoma focus. Pollinator-friendly, low-water, fire-safe.",tags:["retail"]},
+    {name:"Sonoma Ecology Center Native Plant Nursery",city:"Sonoma",state:"CA",lat:38.29,lng:-122.46,regions:["ca-sonoma"],url:"https://sonomaecologycenter.org/nativeplantnursery",desc:"Native plants at Sonoma Garden Park. Fridays and by appointment.",tags:["retail"]},
+    {name:"Mostly Natives Nursery",city:"Point Reyes Station",state:"CA",lat:38.07,lng:-122.81,regions:["ca-sonoma"],url:"https://mostlynatives.com",desc:"Native and drought-tolerant plants for northern California.",tags:["retail"]},
+    {name:"Intermountain Nursery",city:"Prather",state:"CA",lat:36.97,lng:-119.51,regions:["ca-sacramento"],url:"https://intermountainnursery.com",desc:"Central California foothills and Sierra Nevada natives. Sierra foothill specialist.",tags:["retail","wholesale"]},
+    {name:"SacValley CNPS Native Plant Nursery",city:"Rancho Cordova",state:"CA",lat:38.59,lng:-121.30,regions:["ca-sacramento"],url:"https://sacvalleycnps.org/nursery",desc:"Volunteer-run nursery at Soil Born Farms. Spring and fall online sales; in-person Wednesdays.",tags:["retail","events"]},
+    {name:"Cornflower Farms",city:"Elk Grove",state:"CA",lat:38.41,lng:-121.37,regions:["ca-sacramento"],url:"https://cornflowerfarms.com",desc:"Sacramento-area native plant supplier. Contact for retail availability.",tags:["wholesale","retail"]},
+    {name:"Miridae Mobile Nursery",city:"Sacramento",state:"CA",lat:38.58,lng:-121.49,regions:["ca-sacramento"],url:"https://miridae.com/mobilenursery",desc:"UC Davis ecologists bring one of the largest retail native plant selections to your neighborhood via pop-up sales.",tags:["retail","events"]},
+    {name:"Sacramento Valley Conservancy Nursery",city:"Sacramento",state:"CA",lat:38.58,lng:-121.49,regions:["ca-sacramento"],url:"https://sacramentovalleyconservancy.org/nursery",desc:"Spring and fall native plant sales. Online order and pickup at Camp Pollock.",tags:["retail","events"]},
+    {name:"Theodore Payne Nursery",city:"Sun Valley",state:"CA",lat:34.22,lng:-118.38,regions:["ca-socal"],url:"https://theodorepayne.org",desc:"Non-profit. 40+ years serving LA and Southern California. 400+ native species.",tags:["retail","nonprofit","seed"]},
+    {name:"Matilija Nursery",city:"Moorpark",state:"CA",lat:34.28,lng:-118.88,regions:["ca-socal"],url:"https://matilijanursery.com",desc:"Ventura County native plant nursery. Strong selection of Southern California natives.",tags:["retail"]},
+    {name:"Plant Material",city:"Los Angeles",state:"CA",lat:34.13,lng:-118.21,regions:["ca-socal"],url:"https://plant-material.com",desc:"Retail nursery in Northeast LA (Eagle Rock) specializing in California natives.",tags:["retail"]},
+    {name:"Artemisia Nursery",city:"Los Angeles",state:"CA",lat:34.07,lng:-118.25,regions:["ca-socal"],url:"https://artemisianursery.com",desc:"Retail nursery in NE Los Angeles specializing in California natives.",tags:["retail"]},
+    {name:"Grow Native Nursery at CA Botanic Garden",city:"Claremont",state:"CA",lat:34.11,lng:-117.72,regions:["ca-socal"],url:"https://calbg.org/visit/grow-native-nursery",desc:"Nation's largest botanic garden devoted to CA natives. Open seasonally.",tags:["retail"]},
+    {name:"Moosa Creek Nursery",city:"Valley Center",state:"CA",lat:33.22,lng:-117.03,regions:["ca-socal"],url:"https://moosacreeknursery.com",desc:"Sustainably grown CA native plants since 2004. Retail, wholesale, and statewide delivery.",tags:["retail","wholesale","ships"]},
+    {name:"Native West Nursery",city:"San Diego",state:"CA",lat:32.84,lng:-117.05,regions:["ca-socal"],url:"https://nativewest.com",desc:"130-acre San Diego County nursery. The Little Barn retail shop open Thu-Sun.",tags:["retail","wholesale"]},
+    {name:"Las Pilitas Nursery",city:"Santa Margarita",state:"CA",lat:35.39,lng:-120.61,regions:["ca-socal","ca-sacramento"],url:"https://laspilitas.com",desc:"100% California natives. Retail Fri-Sat; ships to LA, San Diego, SF next-day via UPS.",tags:["retail","ships"]},
+    {name:"CNPS Southern CA",city:"Statewide",state:"CA",lat:34.05,lng:-118.24,regions:["ca-socal"],url:"https://cnps.org",desc:"Hosts native plant sales across Southern California. Chapters in LA, San Diego, Orange County, and Inland Empire.",tags:["resource","events"]},
+    {name:"Calscape Nursery Finder",city:"Statewide",state:"CA",lat:37.77,lng:-122.42,regions:["ca-socal","ca-sacramento","ca-bay","ca-sonoma"],url:"https://calscape.org/california-nurseries",desc:"Interactive map of 200+ CA native plant nurseries with current inventory.",tags:["resource","directory"]},
+    {name:"Moana Nursery",city:"Reno / Sparks",state:"NV",lat:39.53,lng:-119.81,regions:["nv-reno"],url:"https://www.moananursery.com",desc:"Family-owned since 1967. Three locations in Reno, Sparks, and South Reno. Grows their own high desert-adapted plants.",tags:["retail","wholesale"]},
+    {name:"Nevada Division of Forestry — Washoe Conservation Nursery",city:"Washoe Valley",state:"NV",lat:39.27,lng:-119.78,regions:["nv-reno"],url:"https://forestry.nv.gov/washoe-state-tree-nursery",desc:"State nursery producing Great Basin and Sierra Nevada natives. Seasonal public sales.",tags:["retail","resource"]},
+    {name:"Nevada Native Plant Society",city:"Statewide",state:"NV",lat:39.53,lng:-119.81,regions:["nv-reno","nv-vegas"],url:"https://nvnps.org",desc:"Hosts native plant sales in Reno, Las Vegas, and Elko.",tags:["resource","events"]},
+    {name:"UNR Extension — Nevada Native Plant Nursery List",city:"Reno",state:"NV",lat:39.53,lng:-119.81,regions:["nv-reno"],url:"https://extension.unr.edu/publication.aspx?PubID=6921",desc:"University of Nevada Cooperative Extension's curated list of NV native plant nurseries and seed suppliers.",tags:["resource","directory"]},
+    {name:"Mojave Bloom Nursery",city:"Las Vegas",state:"NV",lat:36.17,lng:-115.14,regions:["nv-vegas"],url:"https://mojavebloomnv.com",desc:"Community-focused desert native nursery. Founded 2024. Events and education.",tags:["retail"]},
+    {name:"Nevada Division of Forestry — Las Vegas Conservation Nursery",city:"Las Vegas",state:"NV",lat:36.17,lng:-115.14,regions:["nv-vegas"],url:"https://forestry.nv.gov/las-vegas-tree-nursery",desc:"State nursery producing Mojave Desert natives. Seasonal public plant sales.",tags:["retail","resource"]},
+    {name:"Cactus Joe's Blue Diamond Nursery",city:"Blue Diamond",state:"NV",lat:36.05,lng:-115.40,regions:["nv-vegas"],url:"https://cactusjoeslv.com",desc:"Nevada's premier cactus and desert nursery since 1989. 7 acres of native and drought-tolerant plants.",tags:["retail"]},
+    {name:"Desert Survivors Nursery",city:"Tucson",state:"AZ",lat:32.22,lng:-110.97,regions:["az"],url:"https://desertsurvivors.org",desc:"Non-profit. Extensive desert native selection. Tucson's premier source.",tags:["retail","nonprofit"]},
+    {name:"Spadefoot Nursery",city:"Tucson",state:"AZ",lat:32.22,lng:-110.97,regions:["az"],url:"https://spadefootnursery.com",desc:"100% native. Locally grown Sonoran Desert plants. Retail pickup Fri-Sun.",tags:["retail"]},
+    {name:"Flagstaff Native Plant & Seed",city:"Flagstaff",state:"AZ",lat:35.20,lng:-111.65,regions:["az"],url:"https://nativeplantandseed.com",desc:"Plants and seeds native to Northern Arizona, grown from local seed.",tags:["retail","seed"]},
+    {name:"Borderlands Native Plants & Seeds",city:"Patagonia",state:"AZ",lat:31.54,lng:-110.75,regions:["az"],url:"https://borderlandsplants.org",desc:"Pollinator-safe, chemical-free SE Arizona natives.",tags:["retail","seed"]},
+    {name:"Native Seeds/SEARCH",city:"Tucson",state:"AZ",lat:32.22,lng:-110.97,regions:["az"],url:"https://nativeseeds.org",desc:"350+ varieties of heirloom seeds from traditional crops of the SW US.",tags:["seed","nonprofit"]},
+    {name:"Arizona Native Plant Society",city:"Statewide",state:"AZ",lat:33.45,lng:-112.07,regions:["az"],url:"https://aznps.com",desc:"Hosts seasonal native plant sales in Phoenix, Tucson, and Flagstaff.",tags:["resource","events"]},
+    {name:"Plants of the Southwest",city:"Albuquerque",state:"NM",lat:35.08,lng:-106.65,regions:["nm"],url:"https://plantsofthesouthwest.com",desc:"Native plants and seeds for the desert Southwest. 40+ years of regional expertise. Mail order.",tags:["retail","seed","ships"]},
+    {name:"New Mexico Native Plant Society",city:"Statewide",state:"NM",lat:35.08,lng:-106.65,regions:["nm"],url:"https://nmnps.org",desc:"Hosts native plant sales across New Mexico.",tags:["resource","events"]},
+    {name:"Great Basin Natives",city:"Holden",state:"UT",lat:39.09,lng:-112.27,regions:["ut","nv-reno","wy"],url:"https://greatbasinnatives.com",desc:"Rocky Mountain native perennials, shrubs, trees. Retail, wholesale, mail order.",tags:["retail","wholesale","ships"]},
+    {name:"Utah Native Plant Society",city:"Statewide",state:"UT",lat:40.76,lng:-111.89,regions:["ut"],url:"https://unps.org",desc:"Hosts native plant sales across Utah.",tags:["resource","events"]},
+    {name:"Plum Creek Garden Market",city:"Denver area",state:"CO",lat:39.55,lng:-104.88,regions:["co"],url:"https://plumcreekgardenmarket.com/natives",desc:"Multiple Front Range pop-up locations. Large selection of Colorado native perennials and grasses.",tags:["retail"]},
+    {name:"BBB Seed",city:"Boulder",state:"CO",lat:40.01,lng:-105.27,regions:["co","national"],url:"https://bbbseed.com",desc:"Family-owned wildflower and native grass seed company. Regional seed mixes for every US geography, plus single-species native seed.",tags:["retail","wholesale","ships","seed"]},
+    {name:"Western Native Seed",city:"Coaldale",state:"CO",lat:38.37,lng:-105.75,regions:["co","wy","nm"],url:"https://westernnativeseed.com",desc:"Since 1990. Native wildflower, grass, tree, shrub, and wetland seed for the Rockies, western Great Plains, and adjacent areas.",tags:["retail","wholesale","ships","seed"]},
+    {name:"Colorado Native Plant Society",city:"Statewide",state:"CO",lat:39.74,lng:-104.98,regions:["co"],url:"https://conps.org",desc:"Hosts native plant sales across Colorado.",tags:["resource","events"]},
+    {name:"Wyoming Native Plant Society",city:"Statewide",state:"WY",lat:41.14,lng:-104.82,regions:["wy"],url:"https://wyndd.org/wynps",desc:"Wyoming native plant events and nursery guidance.",tags:["resource","events"]},
+    {name:"Center for Native Plants",city:"Whitefish",state:"MT",lat:48.41,lng:-114.34,regions:["mt"],url:"https://centerfornativeplants.com",desc:"Flathead Valley's only retail native plant nursery. 200+ species native to Montana and Intermountain NW.",tags:["retail"]},
+    {name:"Great Bear Native Plants",city:"Hamilton",state:"MT",lat:46.25,lng:-114.16,regions:["mt"],url:"https://greatbearnativeplants.com",desc:"High quality containerized plants native to Western North America. Retail, wholesale, and shipping.",tags:["retail","wholesale","ships"]},
+    {name:"Anuenue Native Plants",city:"Kauai",state:"HI",lat:22.06,lng:-159.50,regions:["hi"],url:"https://anuenuenativeplants.com",desc:"Kauai-based. 100% native Hawaiian plants. Pickup and on-island delivery.",tags:["retail"]},
+    {name:"Kauai Nursery & Landscaping",city:"Lihue",state:"HI",lat:21.98,lng:-159.37,regions:["hi"],url:"https://kauainursery.com",desc:"Kauai's largest nursery including native Hawaiian plants. 45+ years.",tags:["retail","wholesale"]},
+    {name:"Hui Ku Maoli Ola",city:"Kaneohe, Oahu",state:"HI",lat:21.40,lng:-157.80,regions:["hi"],url:"https://nativeplants.hawaii.edu",desc:"100+ native Hawaiian species. Home gardens to large restoration projects.",tags:["retail","wholesale"]},
+    {name:"Maui Native Nursery",city:"Maui",state:"HI",lat:20.80,lng:-156.33,regions:["hi"],url:"https://mauinativenursery.com",desc:"Widely regarded as the most sanitary native plant nursery in Hawaii. Ships clean, disease-free native plants statewide.",tags:["retail","ships"]},
+    {name:"National Tropical Botanical Garden",city:"Kalaheo, Kauai",state:"HI",lat:21.91,lng:-159.53,regions:["hi"],url:"https://ntbg.org",desc:"Grows native Hawaiian plants. Note: verify current plant health practices before purchasing — sanitation standards have varied.",tags:["retail"]},
+    {name:"Eco Blossom Nursery",city:"Fort Worth",state:"TX",lat:32.75,lng:-97.33,regions:["tx"],url:"https://ecoblossom.com",desc:"Woman-owned. 100% Texas native plants, neonic-free. Online ordering + pickup.",tags:["retail","online"]},
+    {name:"Native American Seed",city:"Junction",state:"TX",lat:30.48,lng:-99.77,regions:["tx","ok"],url:"https://seedsource.com",desc:"100% native, American-grown wildflower and prairie grass seed for the Texas-Oklahoma-Louisiana region. Family-owned.",tags:["retail","ships","seed"]},
+    {name:"Hill Country Natives",city:"Leander",state:"TX",lat:30.58,lng:-97.85,regions:["tx"],url:"https://hillcountrynatives.com",desc:"Native trees, shrubs and perennials of the Texas Hill Country.",tags:["retail"]},
+    {name:"Natives of Texas",city:"Kerrville",state:"TX",lat:30.05,lng:-99.14,regions:["tx"],url:"https://nativesoftexas.com",desc:"Deals exclusively in plants native to the Texas Hill Country.",tags:["retail","wholesale"]},
+    {name:"Native Plant Society of Texas",city:"Statewide",state:"TX",lat:30.27,lng:-97.74,regions:["tx"],url:"https://npsot.org",desc:"Hosts regional native plant sales across Texas.",tags:["resource","events"]},
+    {name:"Lady Bird Johnson Wildflower Center",city:"Austin",state:"TX",lat:30.18,lng:-97.87,regions:["tx"],url:"https://wildflower.org",desc:"The national authority on native plants. Plant sales, supplier directory, and expert resources.",tags:["retail","resource"]},
+    {name:"Oklahoma Native Plant Society — Source Directory",city:"Statewide",state:"OK",lat:35.47,lng:-97.52,regions:["ok"],url:"https://oknativeplants.org/plants-seeds-and-landscaping-sources",desc:"Oklahoma Native Plant Society's current list of plant and seed sources.",tags:["resource","directory"]},
+    {name:"Native Plants OKC",city:"Oklahoma City",state:"OK",lat:35.47,lng:-97.52,regions:["ok"],url:"https://izelplants.com/native-to/oklahoma",desc:"Izel Native Plants aggregates nurseries shipping OK-native species.",tags:["retail","ships"]},
+    {name:"Prairie Rose Plant Co",city:"Oklahoma City",state:"OK",lat:35.47,lng:-97.52,regions:["ok"],url:"https://prairieroseplantco.com",desc:"Oklahoma City nursery offering native plants, roses, edibles, herbs, and garden design/consultation services.",tags:["retail"]},
+    {name:"Romance Greenhouse",city:"Romance",state:"AR",lat:35.24,lng:-91.90,regions:["ar"],url:"https://romancegreenhouse.com",desc:"Arkansas greenhouse featuring native plants, tropical plants, and unusual plantings.",tags:["retail"]},
+    {name:"White River Nursery",city:"Fayetteville",state:"AR",lat:36.06,lng:-94.16,regions:["ar"],url:"https://whiterivernursery.com",desc:"One of the largest native plant selections in NW Arkansas.",tags:["retail"]},
+    {name:"Pine Ridge Gardens",city:"London / Dardanelle",state:"AR",lat:35.22,lng:-93.16,regions:["ar"],url:"https://pineridgegardens.com",desc:"Arkansas native plant nursery under new botanist ownership since 2024.",tags:["retail"]},
+    {name:"Arkansas Native Plant Society",city:"Statewide",state:"AR",lat:34.75,lng:-92.29,regions:["ar"],url:"https://anps.org/resources/plant-sources",desc:"Curated list of responsibly sourced AR native plant nurseries.",tags:["resource","directory"]},
+    {name:"Chickadee Natives",city:"New Orleans",state:"LA",lat:29.95,lng:-90.07,regions:["la"],url:"https://chickadeenatives.com",desc:"New Orleans native plant nursery. Local ecotypes — seed collected within 70 miles.",tags:["retail"]},
+    {name:"Delta Flora Native Plants",city:"New Orleans",state:"LA",lat:29.95,lng:-90.07,regions:["la"],url:"https://deltafloranativeplants.com",desc:"Louisiana native plants and seeds for gardeners and professionals.",tags:["retail"]},
+    {name:"Beaver's Abundance Native Plant Nursery",city:"Baton Rouge",state:"LA",lat:30.45,lng:-91.15,regions:["la"],url:"https://beaversabundance.com",desc:"Native plant nursery and eco-boutique.",tags:["retail"]},
+    {name:"Louisiana Native Plant Society",city:"Statewide",state:"LA",lat:30.45,lng:-91.15,regions:["la"],url:"https://lnps.org/resources/plant-seed-sources",desc:"Maintained list of Louisiana native plant nurseries and seed sources.",tags:["resource","directory"]},
+    {name:"Mississippi Native Plant Society",city:"Statewide",state:"MS",lat:32.35,lng:-89.39,regions:["ms"],url:"https://msnativeplants.com",desc:"Best resource for seasonal native plant sales in Mississippi.",tags:["resource","events"]},
+    {name:"Almost Eden Plants",city:"Merryville",state:"LA",lat:30.75,lng:-93.54,regions:["ms","la"],url:"https://almostedenplants.com",desc:"Louisiana-based nursery with extensive native plant selection for the Gulf South. Ships nationwide.",tags:["retail","ships"]},
+    {name:"Florida Native Plants Nursery",city:"Sarasota",state:"FL",lat:27.34,lng:-82.53,regions:["fl"],url:"https://floridanativeplants.com",desc:"Premier FL native plant nursery since 1995.",tags:["retail"]},
+    {name:"Native Nurseries of Tallahassee",city:"Tallahassee",state:"FL",lat:30.44,lng:-84.28,regions:["fl"],url:"https://nativenurseries.com",desc:"100% native. Trees, shrubs, and wildflowers native to N. Florida.",tags:["retail"]},
+    {name:"Wilcox Nursery & Landscape",city:"Largo",state:"FL",lat:27.91,lng:-82.79,regions:["fl"],url:"https://wilcoxnursery.com",desc:"Family business since 1941. Dedicated to Florida native plants.",tags:["retail"]},
+    {name:"Florida Native Plant Society",city:"Statewide",state:"FL",lat:28.54,lng:-81.38,regions:["fl"],url:"https://fnps.org",desc:"Statewide resource. Hosts native plant sales and events.",tags:["resource","events"]},
+    {name:"Nearly Native Nursery",city:"Fayetteville",state:"GA",lat:33.45,lng:-84.46,regions:["ga"],url:"https://nearlynativenursery.com",desc:"Retail native plant nursery specializing in SE native species for wildlife habitat.",tags:["retail"]},
+    {name:"Flat Creek Natives",city:"Perry",state:"GA",lat:32.46,lng:-83.73,regions:["ga"],url:"https://flatcreeknatives.com",desc:"Georgia native plants for restoration and landscaping.",tags:["retail","wholesale"]},
+    {name:"Carolina Native Nursery",city:"Burnsville",state:"NC",lat:35.92,lng:-82.29,regions:["ga"],url:"https://carolinanativenursery.com",desc:"Largest native azalea producer in the US. Broad selection of SE native plants.",tags:["retail","wholesale"]},
+    {name:"NC Native Plant Society",city:"Statewide",state:"NC",lat:35.77,lng:-78.64,regions:["ga"],url:"https://ncwildflower.org/native-plant-nurseries",desc:"Curated list of NC native plant nurseries.",tags:["resource","directory"]},
+    {name:"SC Native Plant Society",city:"Statewide",state:"SC",lat:33.99,lng:-81.04,regions:["sc","ga"],url:"https://scnps.org",desc:"Hosts native plant sales statewide and maintains a nursery directory.",tags:["resource","events"]},
+    {name:"Carolina Wild",city:"Anderson",state:"SC",lat:34.50,lng:-82.65,regions:["sc","ga"],url:"https://carolinawild.com",desc:"South Carolina native plants for home gardens and habitat restoration.",tags:["retail"]},
+    {name:"Tennessee Naturescapes",city:"Tennessee",state:"TN",lat:36.17,lng:-86.78,regions:["tn"],url:"https://tennesseenaturescapes.com",desc:"Native trees, shrubs, wildflowers, ferns and grasses. Retail and mail order.",tags:["retail","ships"]},
+    {name:"GroWild Inc.",city:"Fairview",state:"TN",lat:35.98,lng:-87.12,regions:["tn"],url:"https://growildinc.com",desc:"1,000+ native species. One of the leading native plant nurseries in the eastern US. By appointment.",tags:["retail","wholesale"]},
+    {name:"Petals From the Past",city:"Jemison",state:"AL",lat:32.96,lng:-86.74,regions:["tn"],url:"https://petalsfromthepast.com",desc:"Alabama native plants. Retail nursery with excellent regional selection.",tags:["retail"]},
+    {name:"Habitats Native Plant Nursery",city:"Silver Grove",state:"KY",lat:39.03,lng:-84.39,regions:["ky"],url:"https://habitatsnursery.org",desc:"100% native plants for Kentucky and the Ohio River Valley.",tags:["retail"]},
+    {name:"Roundstone Native Seed",city:"Upton",state:"KY",lat:37.47,lng:-85.89,regions:["ky"],url:"https://roundstoneseed.com",desc:"20+ years growing 300+ native species and 125 seed mixes. Ships nationwide.",tags:["seed","ships"]},
+    {name:"Kentucky Native Plant Society",city:"Statewide",state:"KY",lat:38.20,lng:-84.87,regions:["ky"],url:"https://knps.org",desc:"Best source for seasonal native plant sales across Kentucky.",tags:["resource","events"]},
+    {name:"Ancient Roots Native Nursery",city:"Poseyville",state:"IN",lat:38.17,lng:-87.78,regions:["ky","in"],url:"https://ancientrootsnativenursery.com",desc:"Family-owned. Flowers, grasses, vines, shrubs, trees. All true Midwest natives. Ships.",tags:["retail","ships"]},
+    {name:"West Virginia Native Plant Society",city:"Statewide",state:"WV",lat:38.35,lng:-81.63,regions:["wv"],url:"https://wvnps.org",desc:"Best resource for WV native plant sources and seasonal plant sales.",tags:["resource","events"]},
+    {name:"Winston Gardens Nursery",city:"Martinsburg",state:"WV",lat:39.46,lng:-77.96,regions:["wv","va","pa"],phone:"304-264-4783",desc:"30+ varieties of native trees and shrubs, potted for immediate planting. Phone/visit only — no website.",tags:["retail"]},
+    {name:"Earth Sangha Wild Plant Nursery",city:"Springfield",state:"VA",lat:38.79,lng:-77.19,regions:["va"],url:"https://www.earthsangha.org/wpn",desc:"Unique resource for ecological restoration in the greater Washington DC area.",tags:["retail","wholesale"]},
+    {name:"Chesapeake Natives",city:"Upper Marlboro",state:"MD",lat:38.82,lng:-76.75,regions:["va","pa"],url:"https://www.chesapeakenatives.org",desc:"Native plants for the Mid-Atlantic region. Retail and wholesale.",tags:["retail","wholesale"]},
+    {name:"Mt. Cuba Center",city:"Hockessin",state:"DE",lat:39.79,lng:-75.65,regions:["pa"],url:"https://mtcubacenter.org/gardening-resources/native-plants-for-sale/",desc:"Delaware's premier native plant botanical garden and research center. Seasonal on-site native plant sales open to the public, no admission required to shop.",tags:["retail","nonprofit"]},
+    {name:"Backyard Wildlife Native Plants Nursery",city:"Townsend",state:"DE",lat:39.38,lng:-75.68,regions:["pa"],phone:"302-668-5757",desc:"12-acre native plant meadow and greenhouse. Specializes in plants supporting hummingbirds, butterflies, and pollinators. Open Saturdays, phone/visit only — no website.",tags:["retail"]},
+    {name:"Bowman's Hill Wildflower Preserve Nursery",city:"New Hope",state:"PA",lat:40.38,lng:-74.96,regions:["pa"],url:"https://bhwp.org",desc:"All native plants, many grown from seed on site. Expert staff.",tags:["retail"]},
+    {name:"Ernst Conservation Seeds",city:"Meadville",state:"PA",lat:41.64,lng:-80.15,regions:["pa","ny","oh"],url:"https://www.ernstseed.com",desc:"Largest native seed producer in the eastern US. Hundreds of species of native and naturalized seed since 1964.",tags:["retail","wholesale","ships","seed"]},
+    {name:"North Creek Nurseries",city:"Landenberg",state:"PA",lat:39.74,lng:-75.79,regions:["pa"],url:"https://northcreeknurseries.com",desc:"Wholesale native plant propagation. Eastern US native perennials, grasses, ferns and shrubs.",tags:["wholesale"]},
+    {name:"Native Plant Center at SUNY",city:"Valhalla",state:"NY",lat:41.08,lng:-73.77,regions:["ny"],url:"https://www.sunywcc.edu/about/community-resources/the-native-plant-center/",desc:"Native plants of the Northeast. Annual plant sale, expert resources, and regional plant lists.",tags:["retail","resource","events"]},
+    {name:"Pinelands Nursery",city:"Columbus",state:"NJ",lat:39.99,lng:-74.70,regions:["ny"],url:"https://pinelandsnursery.com",desc:"Ships native plants nationwide. Specializes in Mid-Atlantic and Northeast natives.",tags:["wholesale","ships"]},
+    {name:"Earth Tones Native Plants",city:"Woodbury",state:"CT",lat:41.55,lng:-73.21,regions:["ct"],url:"https://earthtonesnativeplants.com",desc:"Connecticut native plants. Strong pollinator and woodland plant selection.",tags:["retail"]},
+    {name:"Lynette's Native Plants",city:"Greensboro Bend",state:"VT",lat:44.60,lng:-72.29,regions:["nne"],url:"https://plantnative.org/nd_patova.htm",desc:"Vermont native plant nursery. Retail. Northeastern native species.",tags:["retail"]},
+    {name:"Project Native",city:"Housatonic",state:"MA",lat:42.25,lng:-73.36,regions:["nne"],url:"https://projectnative.org",desc:"Non-profit. 170+ varieties native to W. Massachusetts and surrounding region. Ships.",tags:["retail","nonprofit","ships"]},
+    {name:"New England Wild Flower Society",city:"Framingham",state:"MA",lat:42.28,lng:-71.42,regions:["nne"],url:"https://newenglandwild.org",desc:"America's oldest plant conservation org. Plant sales and expert resources.",tags:["retail","resource","events"]},
+    {name:"Burnt Meadow Nursery",city:"Brownfield",state:"ME",lat:43.95,lng:-70.90,regions:["nne"],url:"https://burntmeadow.com",desc:"100% native woody plants native to New England. Wholesale.",tags:["wholesale"]},
+    {name:"Nasami Farm",city:"Whately",state:"MA",lat:42.44,lng:-72.64,regions:["nne"],url:"https://www.nativeplanttrust.org/for-your-garden/nasami-farm/",desc:"Native Plant Trust's 75-acre farm nursery in western MA. Grown from wild-collected seed, no neonics. Premier New England source.",tags:["retail","nonprofit"]},
+    {name:"Native Plant Trust — Garden in the Woods",city:"Framingham",state:"MA",lat:42.28,lng:-71.42,regions:["nne"],url:"https://www.nativeplanttrust.org/visit/garden-in-the-woods/",desc:"45-acre botanic garden and nursery showcasing 1,000+ New England native species. Annual plant sales.",tags:["retail","nonprofit","resource"]},
+    {name:"Blue Stem Natives",city:"Norwell",state:"MA",lat:42.16,lng:-70.80,regions:["nne"],url:"https://bluestemnatives.com",desc:"Women-owned. All-native New England plants grown from seed for genetic diversity. No cultivars, no peat.",tags:["retail"]},
+    {name:"Sylvan Nurseries",city:"Westport",state:"MA",lat:41.58,lng:-71.08,regions:["nne"],url:"https://www.sylvannurseries.com",desc:"Diverse native shrubs and herbaceous plants for New England landscapes.",tags:["retail","wholesale"]},
+    {name:"Rhode Island Wild Plant Society",city:"Statewide",state:"RI",lat:41.82,lng:-71.42,regions:["nne"],url:"https://riwps.org/native-plant-sales/",desc:"Spring and fall native plant sales. Plants grown from local Ecoregion 59 seed. Members get early access.",tags:["retail","nonprofit","events"]},
+    {name:"Bagley Pond Nursery",city:"Warner",state:"NH",lat:43.29,lng:-71.83,regions:["nne"],url:"https://bagleypond.com",desc:"New Hampshire native plant specialist. Highly recommended by NH native plant community.",tags:["retail"]},
+    {name:"Rewild Native Plant Nursery",city:"Connecticut",state:"CT",lat:41.60,lng:-72.72,regions:["ct"],url:"https://www.rewildct.com",desc:"Organically grown CT and Northeast native perennials from locally collected seed. Supports pollinators and birds.",tags:["retail"]},
+    {name:"Broken Arrow Nursery",city:"Hamden",state:"CT",lat:41.40,lng:-72.90,regions:["ct"],url:"https://brokenarrownursery.com",desc:"Well-regarded CT nursery with strong native plant selection including rare and unusual natives.",tags:["retail"]},
+    {name:"Catskill Native Nursery",city:"Kerhonkson",state:"NY",lat:41.77,lng:-74.30,regions:["ny"],url:"https://catskillnativenursery.com",desc:"Native plants of the Catskills and Hudson Valley. Wide selection of trees, shrubs, and perennials.",tags:["retail"]},
+    {name:"Triple Oaks Nursery",city:"Franklinville",state:"NJ",lat:39.61,lng:-75.08,regions:["ny"],url:"https://www.tripleoaks.com",desc:"South Jersey native plants. Trees, shrubs, perennials, seeds. Strong NJ-native selection.",tags:["retail"]},
+    {name:"Herring Run Nursery",city:"Baltimore",state:"MD",lat:39.29,lng:-76.61,regions:["va"],url:"https://herringrunnursery.bluewaterbaltimore.org",desc:"Non-profit. Native plants of the Chesapeake Bay watershed. Spring sales and online orders.",tags:["retail","nonprofit","events"]},
+    {name:"Native Roots Nursery",city:"Twin Falls",state:"ID",lat:42.56,lng:-114.46,regions:["mt"],url:"https://native-roots.net",desc:"Native plants for southern Idaho and the high desert intermountain region.",tags:["retail"]},
+    {name:"Flutterby Gardens",city:"Boise",state:"ID",lat:43.62,lng:-116.20,regions:["mt"],url:"https://www.goflutterby.com",desc:"Native and pollinator plants for Boise and surrounding Idaho. Retail and landscape design.",tags:["retail"]},
+    {name:"Blake Nursery",city:"Big Timber",state:"MT",lat:45.83,lng:-109.95,regions:["mt"],url:"https://www.blakenursery.com/montana-natives",desc:"Family nursery specializing in Montana native trees, shrubs, perennials, and grasses.",tags:["retail"]},
+    {name:"Wild Roots Native Nursery",city:"Atlanta",state:"GA",lat:33.75,lng:-84.39,regions:["ga"],url:"https://wildrootsnativenursery.com",desc:"Women-owned. Hard-to-find GA natives propagated from seed. Woodland ephemerals, sunny perennials, native grasses.",tags:["retail"]},
+    {name:"North Georgia Natives",city:"North Georgia",state:"GA",lat:34.50,lng:-84.00,regions:["ga"],url:"https://www.northgeorgianatives.com",desc:"Sustainably grown and sourced native plants from Georgia and the Southeast.",tags:["retail"]},
+    {name:"Cottage Garden Natives",city:"Georgia",state:"GA",lat:33.75,lng:-84.39,regions:["ga"],url:"https://www.cottagegardennatives.com",desc:"Small family-owned nursery growing plants native to the southeastern US for home gardeners.",tags:["retail"]},
+    {name:"Ohio Prairie Nursery",city:"Hiram",state:"OH",lat:41.31,lng:-81.14,regions:["oh"],url:"https://ohioprairie.com",desc:"Native Ohio prairie and woodland plants. Ships within OH and surrounding states.",tags:["retail","ships"]},
+    {name:"Leaves for Wildlife Native Plant Nursery",city:"Sunbury",state:"OH",lat:40.24,lng:-82.86,regions:["oh"],url:"https://leaveswildlife.com",desc:"Midwest native trees, shrubs, perennials, and spring ephemerals.",tags:["retail","online"]},
+    {name:"Michiganense Natives",city:"Plymouth",state:"MI",lat:42.37,lng:-83.47,regions:["mi"],url:"https://michiganensenatives.com",desc:"Metro Detroit's retail native nursery. 250+ MI species. Pesticide-free.",tags:["retail"]},
+    {name:"Detroit Wildflower Nursery",city:"Farmington Hills",state:"MI",lat:42.49,lng:-83.38,regions:["mi"],url:"https://detroitwildflowers.com",desc:"Organic, pesticide-free wildflowers native to Michigan and the Great Lakes.",tags:["retail"]},
+    {name:"New Leaf Natives",city:"Manchester",state:"MI",lat:42.15,lng:-84.05,regions:["mi"],url:"https://newleafnatives.com",desc:"300+ native species. Mail-order shipping available.",tags:["retail","wholesale","ships"]},
+    {name:"Windy Rock Farm & Nursery",city:"Manchester",state:"MI",lat:42.15,lng:-84.05,regions:["mi"],url:"https://windyrocknursery.com",desc:"Fully retail. 80+ varieties of native perennials and shrubs.",tags:["retail"]},
+    {name:"Michigan Wildflower Farm",city:"Portland",state:"MI",lat:42.87,lng:-84.90,regions:["mi"],url:"https://michiganwildflowerfarm.com",desc:"Michigan genotype natives since 1996. Trees, shrubs, grasses, wildflowers.",tags:["retail","wholesale"]},
+    {name:"Feral Flora",city:"Ann Arbor",state:"MI",lat:42.28,lng:-83.74,regions:["mi"],url:"https://feral-flora.com",desc:"Michigan-native plants from wild-collected seed. Online sales.",tags:["retail","online"]},
+    {name:"Native Plants Unlimited",city:"Indianapolis",state:"IN",lat:39.77,lng:-86.16,regions:["in"],url:"https://nativeplantsunlimitedshop.com",desc:"300+ native species available to central Indiana every year.",tags:["retail"]},
+    {name:"Indiana Native Plant Society — Grow Indiana Natives",city:"Statewide",state:"IN",lat:39.77,lng:-86.16,regions:["in"],url:"https://indiananativeplants.org/landscaping/where-to-buy",desc:"Interactive map of Indiana invasive-free native nurseries statewide.",tags:["resource","directory"]},
+    {name:"Blazing Star Nursery",city:"Woodstock",state:"IL",lat:42.32,lng:-88.45,regions:["il"],url:"https://blazingstar.com",desc:"Illinois native plants for prairies, woodlands, and wetlands.",tags:["retail","wholesale"]},
+    {name:"Illinois Plants Native Nursery Directory",city:"Statewide",state:"IL",lat:40.63,lng:-89.40,regions:["il"],url:"https://illinoisplants.org/native-plant-nurseries",desc:"Comprehensive directory of Illinois native plant nurseries by region.",tags:["resource","directory"]},
+    {name:"Johnson's Nursery",city:"Menomonee Falls",state:"WI",lat:43.18,lng:-88.12,regions:["wi"],url:"https://johnsonsnursery.com",desc:"Many natives grown from wild-collected local seed. Wide array of trees, shrubs and perennials.",tags:["retail","wholesale"]},
+    {name:"Two Ferns Native Nursery",city:"Madison",state:"WI",lat:43.07,lng:-89.40,regions:["wi"],url:"https://twofernsnativenursery.com",desc:"Woman-owned. Diverse native perennials. Online shop and pickup.",tags:["retail","online"]},
+    {name:"Prairie Restorations",city:"Princeton",state:"MN",lat:45.57,lng:-93.59,regions:["mn"],url:"https://prairierestorations.com",desc:"Native plants and seeds for prairies, woodlands, and wetlands.",tags:["retail","wholesale","seed"]},
+    {name:"Landscape Alternatives",city:"Shafer",state:"MN",lat:45.38,lng:-92.75,regions:["mn"],url:"https://landscapealternatives.org",desc:"Minnesota native plants for home gardens and restoration.",tags:["retail"]},
+    {name:"Iowa Native Plant Society",city:"Statewide",state:"IA",lat:41.88,lng:-93.10,regions:["ia"],url:"https://iowanativeplants.org",desc:"Best resource for Iowa native plant sales and nursery sources.",tags:["resource","events"]},
+    {name:"Native Legacy Tree & Perennial Nursery",city:"Ames",state:"IA",lat:42.03,lng:-93.62,regions:["ia"],url:"https://native-legacy-tree-perennial-nursery.myshopify.com",desc:"100% native. Multiple Iowa locations.",tags:["retail"]},
+    {name:"Ion Exchange",city:"Harpers Ferry",state:"IA",lat:43.21,lng:-91.15,regions:["ia"],url:"https://ionxchange.com",desc:"Native plants, seed, and prairie restorations. Iowa genotype stock. Retail and mail order.",tags:["retail","seed","ships"]},
+    {name:"Sow Wild Natives",city:"Kansas City",state:"MO",lat:39.10,lng:-94.58,regions:["ks"],url:"https://sowwildnatives.com",desc:"Retail storefront in Kansas City. Native wildflowers and grasses.",tags:["retail"]},
+    {name:"City Roots Nursery",city:"Kansas City",state:"MO",lat:39.10,lng:-94.58,regions:["ks"],url:"https://cityrootsnursery.com",desc:"Native trees, shrubs and perennials of Missouri and Kansas.",tags:["retail"]},
+    {name:"Vinland Valley Nursery",city:"Baldwin City",state:"KS",lat:38.78,lng:-95.19,regions:["ks"],url:"https://vinlandvalleynursery.com",desc:"280+ native species, organic, pesticide-free. Butterfly gardening specialists.",tags:["retail"]},
+    {name:"Grow Native! Missouri",city:"Statewide",state:"MO",lat:38.57,lng:-92.17,regions:["ks"],url:"https://grownative.org",desc:"Searchable native plant database + seasonal native plant sales across Missouri.",tags:["resource","events"]},
+    {name:"Nebraska Statewide Arboretum",city:"Lincoln",state:"NE",lat:40.81,lng:-96.70,regions:["ne"],url:"https://plantnebraska.org",desc:"Native trees, shrubs, grasses and perennials adapted to the Great Plains. Online store.",tags:["retail","online"]},
+    {name:"Prairie Plains Resource Institute",city:"Aurora",state:"NE",lat:40.87,lng:-98.00,regions:["ne"],url:"https://prairieplains.org",desc:"Local ecotype seed and plants for prairie restoration.",tags:["retail","seed"]},
+    {name:"Prairie Restorations — Ships to Dakotas",city:"Princeton",state:"MN",lat:45.57,lng:-93.59,regions:["nd"],url:"https://prairierestorations.com",desc:"Minnesota-based but ships Great Plains genotype plants to ND and SD.",tags:["retail","ships"]},
+    {name:"North Dakota Native Plant Society",city:"Statewide",state:"ND",lat:46.82,lng:-100.78,regions:["nd"],url:"https://ndnps.org",desc:"Best starting point for finding ND and SD native plant sources.",tags:["resource","events"]},
+    {name:"Big Sioux Nursery Inc.",city:"Watertown",state:"SD",lat:44.90,lng:-97.11,regions:["nd"],url:"http://bigsiouxnursery.com",desc:"Non-profit wholesale nursery producing native trees, shrubs, perennials, and grasses for South Dakota conservation districts.",tags:["wholesale","nonprofit"]},
+    {name:"Jolly Lane Greenhouse",city:"Rapid City",state:"SD",lat:44.08,lng:-103.23,regions:["nd"],url:"https://www.jollylane.com",desc:"Rapid City garden center carrying a wide selection of plants, including natives suited to South Dakota's Black Hills climate.",tags:["retail"]},
+    {name:"Alaska Native Plant Society",city:"Anchorage",state:"AK",lat:61.22,lng:-149.90,regions:["ak"],url:"https://aknps.org",desc:"Best starting point for finding Alaskan native plants.",tags:["resource","events"]},
+    {name:"Izel Native Plants",city:"Online",state:"US",lat:38.89,lng:-77.03,regions:["va"],url:"https://izelplants.com",desc:"Online aggregator of multiple native plant nurseries. Mid-Atlantic and beyond. Ships nationwide.",tags:["retail","online","ships"]},
+    {name:"Prairie Moon Nursery",city:"Winona",state:"MN",lat:44.05,lng:-91.64,regions:["national"],url:"https://prairiemoon.com",desc:"Ships nationwide. 600+ native species — seeds, plugs, and plants for every US region.",tags:["ships","seed"]},
+    {name:"American Meadows",city:"Williston",state:"VT",lat:44.44,lng:-73.09,regions:["national"],url:"https://americanmeadows.com",desc:"Ships nationwide. Native wildflower seeds and plants for every US climate zone.",tags:["ships","seed"]},
+    {name:"PlantNative.org Directory",city:"National",state:"US",lat:39.50,lng:-98.35,regions:["national"],url:"https://plantnative.org/national_nursery_dir_main.htm",desc:"871+ native plant nurseries searchable by state. The most comprehensive national directory.",tags:["resource","directory"]},
+    {name:"Prairie Nursery",city:"Westfield",state:"WI",lat:43.90,lng:-89.49,regions:["national"],url:"https://prairienursery.com",desc:"Ships nationwide. High-quality native plants and seeds for prairies, woodlands, and wetlands.",tags:["ships","seed"]},
+    {name:"Wild Ones Native Plant Nursery Finder",city:"National",state:"US",lat:39.50,lng:-98.35,regions:["national"],url:"https://nativegardendesigns.wildones.org/nursery-list",desc:"State-by-state directory of nurseries endorsed by Wild Ones.",tags:["resource","directory"]},
+    {name:"Garden for Wildlife",city:"National",state:"US",lat:39.50,lng:-98.35,regions:["national"],url:"https://gardenforwildlife.com",desc:"Ships native plants to all 50 states organized by state.",tags:["ships","online"]}
     ];
     function getRegion(zip) {
         var z = parseInt(zip) || 0;
-        if (!z)
-            return 'national';
-        if (z >= 97000 && z <= 97299)
-            return 'or-portland';
-        if (z >= 97300 && z <= 97499)
-            return 'or-willamette';
-        if (z === 97031 || z === 97014 || z === 97041)
-            return 'or-gorge';
-        if (z >= 98000 && z <= 98999)
-            return 'wa';
-        if (z >= 94000 && z <= 94799)
-            return 'ca-bay';
-        if ((z >= 94800 && z <= 94999) || (z >= 95400 && z <= 95499))
-            return 'ca-sonoma';
-        if (z >= 85000 && z <= 86999)
-            return 'az';
-        if (z >= 48000 && z <= 49999)
-            return 'mi';
-        if ((z >= 5000 && z <= 5999) || (z >= 1000 && z <= 3999))
-            return 'vt';
-        if (z >= 96700 && z <= 96899)
-            return 'hi';
-        if (z >= 75000 && z <= 79999)
-            return 'tx';
-        if (z >= 80000 && z <= 81999)
-            return 'co';
-        if (z >= 32000 && z <= 34999)
-            return 'fl';
-        if ((z >= 30000 && z <= 31999) || (z >= 27000 && z <= 28999))
-            return 'ga';
-        if ((z >= 60000 && z <= 62999))
-            return 'il';
-        if ((z >= 63000 && z <= 65999) || (z >= 66000 && z <= 67999))
-            return 'ks';
-        if ((z >= 55000 && z <= 56999))
-            return 'mn';
-        if ((z >= 43000 && z <= 45999))
-            return 'oh';
-        if ((z >= 15000 && z <= 19999) || (z >= 20000 && z <= 21999))
-            return 'pa';
-        if ((z >= 10000 && z <= 14999) || (z >= 7000 && z <= 8999))
-            return 'ny';
-        if ((z >= 37000 && z <= 38999) || (z >= 35000 && z <= 36999) || (z >= 29000 && z <= 29999))
-            return 'tn';
-        if (z >= 84000 && z <= 84999)
-            return 'ut';
-        if ((z >= 59000 && z <= 59999) || (z >= 83000 && z <= 83999))
-            return 'mt';
-        if (z >= 87000 && z <= 88999)
-            return 'nm';
-        if (z >= 68000 && z <= 69999)
-            return 'ne';
-        if (z >= 53000 && z <= 54999)
-            return 'wi';
-        if (z >= 6000 && z <= 6999)
-            return 'ct';
-        if (z >= 22000 && z <= 24999)
-            return 'va';
+        if (!z) return 'national';
+        if (z >= 97000 && z <= 97299) return 'or-portland';
+        if (z === 97031 || z === 97014 || z === 97041) return 'or-gorge';
+        if (z >= 97300 && z <= 97499) return 'or-willamette';
+        if (z >= 97500 && z <= 97999) return 'or-southern';
+        if (z >= 98000 && z <= 98999) return 'wa';
+        if (z >= 94000 && z <= 94799) return 'ca-bay';
+        if ((z >= 94800 && z <= 94999) || (z >= 95400 && z <= 95499)) return 'ca-sonoma';
+        if ((z >= 95000 && z <= 95399) || (z >= 95500 && z <= 95999)) return 'ca-sacramento';
+        if ((z >= 90000 && z <= 93999) || (z >= 96000 && z <= 96199)) return 'ca-socal';
+        if ((z >= 88900 && z <= 88999) || (z >= 89000 && z <= 89199) || (z >= 89300 && z <= 89399)) return 'nv-vegas';
+        if ((z >= 89200 && z <= 89299) || (z >= 89400 && z <= 89999)) return 'nv-reno';
+        if (z >= 85000 && z <= 86999) return 'az';
+        if (z >= 87000 && z <= 88499) return 'nm';
+        if (z >= 84000 && z <= 84999) return 'ut';
+        if (z >= 80000 && z <= 81999) return 'co';
+        if (z >= 82000 && z <= 83199) return 'wy';
+        if ((z >= 59000 && z <= 59999) || (z >= 83200 && z <= 83999)) return 'mt';
+        if (z >= 96700 && z <= 96899) return 'hi';
+        if (z >= 99500 && z <= 99999) return 'ak';
+        if (z >= 75000 && z <= 79999) return 'tx';
+        if (z >= 73000 && z <= 74999) return 'ok';
+        if (z >= 71600 && z <= 72999) return 'ar';
+        if (z >= 70000 && z <= 71499) return 'la';
+        if (z >= 38600 && z <= 39799) return 'ms';
+        if (z >= 32000 && z <= 34999) return 'fl';
+        if ((z >= 30000 && z <= 31999) || (z >= 27000 && z <= 28999)) return 'ga';
+        if (z >= 29000 && z <= 29999) return 'sc';
+        if ((z >= 37000 && z <= 38599) || (z >= 35000 && z <= 36999)) return 'tn';
+        if (z >= 40000 && z <= 42799) return 'ky';
+        if (z >= 24700 && z <= 26899) return 'wv';
+        if ((z >= 22000 && z <= 24699) || (z >= 20000 && z <= 20599)) return 'va';
+        if ((z >= 20600 && z <= 21999) || (z >= 19700 && z <= 19999)) return 'pa';
+        if (z >= 15000 && z <= 19699) return 'pa';
+        if ((z >= 10000 && z <= 14999) || (z >= 7000 && z <= 8999)) return 'ny';
+        if ((z >= 6000 && z <= 6999) || (z >= 2800 && z <= 2999)) return 'ct';
+        if (z >= 1000 && z <= 5999) return 'nne';
+        if (z >= 43000 && z <= 45999) return 'oh';
+        if (z >= 48000 && z <= 49999) return 'mi';
+        if (z >= 46000 && z <= 47999) return 'in';
+        if (z >= 60000 && z <= 62999) return 'il';
+        if (z >= 53000 && z <= 54999) return 'wi';
+        if (z >= 55000 && z <= 56999) return 'mn';
+        if (z >= 50000 && z <= 52999) return 'ia';
+        if ((z >= 63000 && z <= 65999) || (z >= 66000 && z <= 67999)) return 'ks';
+        if (z >= 68000 && z <= 69999) return 'ne';
+        if ((z >= 57000 && z <= 57999) || (z >= 58000 && z <= 58999)) return 'nd';
         return 'national';
     }
     function getRegionLabel(r) {
-        var m = {
-            'or-portland': 'Oregon — Portland metro & Willamette Valley',
-            'or-willamette': 'Oregon — Willamette Valley',
-            'or-gorge': 'Oregon — Columbia Gorge',
-            'wa': 'Washington',
-            'ca-bay': 'California — Bay Area',
-            'ca-sonoma': 'California — Sonoma / North Bay',
-            'az': 'Arizona',
-            'mi': 'Michigan',
-            'vt': 'Vermont & New England',
-            'hi': 'Hawaii',
-            'tx': 'Texas',
-            'co': 'Colorado & Mountain West',
-            'fl': 'Florida',
-            'ga': 'Georgia & Carolinas',
-            'il': 'Illinois & Great Lakes',
-            'ks': 'Kansas & Missouri',
-            'mn': 'Minnesota & Upper Midwest',
-            'oh': 'Ohio',
-            'pa': 'Pennsylvania & Mid-Atlantic',
-            'ny': 'New York & New Jersey',
-            'tn': 'Tennessee, Alabama & South Carolina',
-            'ut': 'Utah & Mountain West',
-            'mt': 'Montana & Idaho',
-            'nm': 'New Mexico & Southwest',
-            'ne': 'Nebraska & Great Plains',
-            'wi': 'Wisconsin',
-            'ct': 'Connecticut & Rhode Island',
-            'va': 'Virginia, Maryland & DC',
-            'national': 'National resources'
-        };
+        var m = {'or-portland':'Oregon — Portland metro & Willamette Valley','or-willamette':'Oregon — Willamette Valley','or-gorge':'Oregon — Columbia Gorge','or-southern':'Oregon — Southern & Eastern Oregon','wa':'Washington','ca-bay':'California — Bay Area','ca-sonoma':'California — Sonoma / North Bay','ca-sacramento':'California — Sacramento Valley & Sierra Foothills','ca-socal':'California — Southern California','nv-reno':'Nevada — Reno / Northern Nevada & Great Basin','nv-vegas':'Nevada — Las Vegas / Mojave Desert','az':'Arizona','nm':'New Mexico & Southwest','ut':'Utah','co':'Colorado','wy':'Wyoming','mt':'Montana & Idaho','hi':'Hawaii','ak':'Alaska','tx':'Texas','ok':'Oklahoma','ar':'Arkansas','la':'Louisiana','ms':'Mississippi','fl':'Florida','ga':'Georgia & North Carolina','sc':'South Carolina','tn':'Tennessee & Alabama','ky':'Kentucky','wv':'West Virginia','va':'Virginia, Maryland & DC','pa':'Pennsylvania & Mid-Atlantic','ny':'New York & New Jersey','ct':'Connecticut & Rhode Island','nne':'New England','oh':'Ohio','mi':'Michigan','in':'Indiana','il':'Illinois','wi':'Wisconsin','mn':'Minnesota','ia':'Iowa','ks':'Kansas & Missouri','ne':'Nebraska & Great Plains','nd':'North & South Dakota','national':'National resources'};
         return m[r] || 'Your region';
     }
     function renderNurseries(filter) {
         var region = getRegion(currentZip);
         var local = NURSERIES.filter(function(n) {
-            return n.region === region;
+            return n.regions.indexOf(region) !== -1;
         });
         var national = NURSERIES.filter(function(n) {
-            return n.region === 'national';
+            return n.regions.indexOf('national') !== -1;
         });
         var showLocal = filter && filter !== 'all' ? local.filter(function(n) {
             return n.tags.includes(filter);
@@ -2468,7 +1779,7 @@
         var combined = showLocal.concat(showNat);
         var shownNurseries = combined.slice(0, demoCap);
         var remaining = combined.length - shownNurseries.length;
-        var totalAvailable = local.length || combined.length;
+        var totalAvailable = combined.length;
         document.getElementById('r-nurseries').innerHTML = totalAvailable ? Math.min(demoCap, totalAvailable) + ' <span style="font-size:15px;font-weight:400;opacity:.65;">of ' + totalAvailable + '</span>' : '—';
         document.getElementById('nursery-label').textContent = local.length ? 'Local nurseries' : 'Ships nationwide';
         document.getElementById('r-nursery-sub').textContent = combined.length ? Math.min(demoCap, combined.length) + ' of ' + combined.length + ' native nurseries shown near zip ' + currentZip + ' — get the app to see the full list' : 'No local nurseries in our database yet for this region — national mail-order options below ship anywhere in the US';
@@ -2885,7 +2196,7 @@
         }
         var ecoregionLine = ecoregion ? ('- EPA ecoregion: '+ecoregion+'\n') : '';
         var photoCheckInstruction = imgData ? '\n\nIMPORTANT: First check whether the uploaded photo actually shows an outdoor yard, garden, or landscaping area. If it does NOT (for example, it shows a person, a pet, an indoor room, a patio with no plantable ground, an unrelated object, etc.), respond with ONLY this exact line and nothing else:\nPHOTO_MISMATCH: [one short, friendly sentence explaining what you see instead and asking for a photo of their yard]\n\nIf the photo DOES show a yard or outdoor planting area, ignore this instruction and proceed normally with the full response format below.' : '';
-        var prompt = 'You are SmartScape, an expert in native plants and climate-resilient landscaping for all US regions.\n\nSite details:\n- Zip code: '+zip+'\n'+locationLine+ecoregionLine+'- Yard size: '+sizeLabel+'\n- Sun exposure: '+sun+'\n'+(elevation ? '- Elevation: '+elevationEl.options[elevationEl.selectedIndex].text+'\n' : '')+'- Goals: '+goals+'\n'+(imgData?'- A photo of the site has been uploaded and included.\n':'')+'\nCRITICAL: All plant recommendations must be genuinely native to the SPECIFIC ecoregion listed above — not just the general state or region. A plant native to California is NOT acceptable for a Willamette Valley site. A plant native to Eastern Oregon is NOT acceptable for a Portland metro or Willamette Valley site. Use the EPA ecoregion to select plants with precision. If elevation is provided, select plants specifically suited to that elevation range — do not recommend lowland plants for mid or high elevation sites, or vice versa. Never state or imply a regional wildfire risk level (for example, describing an area as a low-risk or high-risk wildfire zone) anywhere in your response. TREE DIVERSITY RULE: For the Canopy/Trees layer, always select from the full range of tree species genuinely native to the specific ecoregion — never default to the single most iconic or most commonly-cited tree for that region across every recommendation. For example, in the Willamette Valley ecoregion, Oregon white oak (Quercus garryana) is a valid choice but is NOT the only valid choice — Cascara (Frangula purshiana), Douglas fir (Pseudotsuga menziesii), bigleaf maple (Acer macrophyllum), western red cedar (Thuja plicata), Grand fir (Abies grandis), Pacific dogwood (Cornus nuttallii), red alder (Alnus rubra), and vine maple (Acer circinatum) are all genuinely native and appropriate depending on site conditions and goals. Apply this same principle of genuine species diversity to every ecoregion covered — vary tree selection based on the specific site\'s sun, moisture, elevation, and goals rather than repeating the same default species run after run. REGIONAL PEST & DISEASE RULE: When a tree or shrub species has a well-documented, currently active, incurable pest or disease problem affecting a meaningful portion of its range, do not recommend it as an uncaveated primary pick. For example, emerald ash borer is now established in parts of Oregon and is fatal to all native ash species, including Oregon ash (Fraxinus latifolia), with no available cure — do not recommend Oregon ash as a straightforward pick in or near affected areas; choose a genuinely native alternative tree instead. If the threat is only established in part of the region and the specific site may plausibly be unaffected, you may still include the species but must add a plain-language caveat naming the threat and noting that a genuinely native alternative may be a safer long-term choice. Apply this same caution to any other tree or shrub species with a similarly well-documented, currently active, incurable regional threat.'+(realCity?' The SITE ANALYSIS must refer to the city/town as "'+realCity+', '+realState+'" exactly as given above — do not guess a different city name.':'')+'\n\nWRITING STYLE RULES (apply to every plant description, always): Write in plain, everyday language a non-expert homeowner would understand — avoid horticultural or technical jargon (for example, instead of "low-fuel structure" say something like "doesn\'t build up thick, dry, dead plant material that can fuel fires". Whenever you mention a plant supporting pollinators, wildlife, or a nectar/food source, always name specifically who benefits (e.g. "a nectar source for hummingbirds and native bees" — never just "a nectar source" with no audience named) — this applies within the descriptive sentence itself, not only in the trailing Attracts: tag. Never describe a fruit or berry color using a comparison that could be confused with a specific named commercial fruit (e.g. do not say "blue berries", since it reads as the fruit blueberry — just say "berries", or describe use like "for jelly/syrup" instead of color. Never describe a fruit/berry color that changes through ripening (e.g. yellow to blue to purple) as if it were one fixed color — if a color isn\'t stable through ripening, omit the color rather than naming one stage of it. PLANT-SPECIFIC ACCURACY NOTE: Wild Ginger (Asarum species) is a moisture-loving woodland plant that does NOT thrive in true dry shade — if you recommend it for a site with dry shade under mature conifers, you MUST say so explicitly, e.g. note that it will need supplemental watering through the dry season when planted in that situation, rather than describing it as well-suited to dry shade without qualification. Never insert a divider line of dashes, underscores, or asterisks (e.g. \"---\" or \"--\") anywhere in your response, including between sections — use only the exact section labels given below to separate content. CRITICAL: Output ONLY your final, fully-considered answer. Never show your reasoning process, self-corrections, or second-guessing anywhere in the response — do not write phrases like wait, actually, let me reconsider, or substituting with followed by a replacement choice. If you decide partway through that a plant does not fit, work that out silently and write only the final plant you settled on, with no visible trace of the earlier choice or the substitution itself.'+photoCheckInstruction+hawaiiInstructions+'\n\nRespond in EXACTLY this format:\n\nSITE ANALYSIS:\n[2-3 sentences: climate zone, typical soil and rainfall, any photo observations. Be specific to this region.]\n\nRECOMMENDED NATIVE PLANTS:\n[Group these 8-12 plants into landscaping layers using this exact structure: a LAYER line before each group, choosing only from these layer names as needed, and always output the groups in this exact order — easiest/smallest commitment first, biggest last: LAYER: Groundcover, LAYER: Wildflowers & Grasses, LAYER: Shrubs & Bushes, LAYER: Canopy/Trees. Only include a LAYER line if that group has at least one plant. Aim for 8-12 plants total; if fewer plants genuinely satisfy all selected goals for this region, provide as many as legitimately qualify, but never fewer than 5. Under each LAYER line, list each plant on its own line:\n- Common Name (Scientific name) — one sentence why it fits this site, sun exposure, and goals. MATURE SIZE: Immediately after that sentence, include the plant\'s approximate mature size in plain language (e.g. "Mature size: grows to 15–25 ft tall and 10 ft wide" or "Mature size: reaches 2–3 ft tall and spreads slowly to form a groundcover mat"). INDIGENOUS USE NOTE: Immediately after the mature size, add one brief sentence noting a documented Indigenous use of that species (for example food, medicine, fiber, dye, or utilitarian use), consistent with well-established ethnobotanical references such as the Native American Ethnobotany Database (Moerman) — keep this factual and general, do not attribute a use to a specific tribe or nation unless it is well-documented and broadly agreed upon, and if a plant\'s Indigenous use is not well known, omit this note for that plant rather than guessing. If Water savings is a selected goal, only recommend plants that are drought-tolerant or low-water once established; do not recommend species that need supplemental irrigation through the dry season. Wild Ginger (Asarum caudatum) is explicitly excluded from any recommendation list when Water savings is a selected goal, regardless of site conditions — never include it in that case. For shaded or partially shaded sites where Water savings is a selected goal and a groundcover is needed, favor genuinely drought-tolerant native groundcover options such as Kinnikinnick (Arctostaphylos uva-ursi), dwarf Oregon grape (Mahonia nervosa / Berberis nervosa), Woodland strawberry (Fragaria vesca), or Inside-out flower (Vancouveria hexandra) where appropriate to the site\'s actual zip code and conditions — do not force one of these if it is a poor regional fit, but treat them as preferred candidates over moisture-dependent species. If Pollinators is a selected goal, only recommend plants with a meaningful pollinator or wildlife value (nectar, larval host, seed/berry food source), and the Attracts note must name the specific species or type it supports — but only name a specific species (for example \"monarch butterflies\") when that plant is a well-documented nectar or host source for that exact species; if a plant only attracts butterflies or pollinators generally, without species-specific documentation, use a broader but still concrete term such as \"native butterflies\" or \"swallowtail and other butterflies\" rather than guessing a named species. Monarch butterflies specifically have narrow, well-documented needs — milkweed (Asclepias) species are their only larval host, and their adult nectar sources are a specific, limited list that includes plants such as Blazing Star/Liatris, goldenrod, and asters — never name \"monarch butterflies\" in an Attracts note or anywhere in a plant description unless the plant is genuinely a documented monarch host or nectar source. If Fire resistance is a selected goal, explain the specific low-flammability or fire-resistant characteristic of that plant (such as high moisture content, low resin/oil content, or minimal dead material buildup) rather than referencing regional wildfire risk. If Low maintenance is a selected goal, only recommend plants that are non-aggressive spreaders and do not require regular pruning, dividing, or staking once established. If Color & beauty is a selected goal, only recommend plants with a distinct, showy bloom period, and note the approximate bloom season in the description. If Food production is a selected goal, only recommend plants that produce human- or wildlife-edible fruit, nuts, or berries, and name what is edible in the description. Attracts: [specific pollinators, birds, or wildlife this plant supports]. End the line with "Lifecycle: Perennial." or "Lifecycle: Annual." or "Lifecycle: Biennial." based on the actual life cycle of that plant.]\n\nPLANTING TIMELINE:\n[Exactly 4 entries, one per season, in this order: Fall, Winter, Spring, Summer — all four are mandatory; a timeline missing any one of the four seasons is incorrect, even if that season involves only maintenance and no new planting. CRITICAL — before writing the timeline, determine the ecologically correct PRIMARY planting season for this specific climate/ecoregion: in Mediterranean or dry-summer climates (e.g. Pacific Northwest west of the Cascades, coastal and inland California), Fall is the primary planting season — most new plants should go in the ground in fall so autumn rain establishes deep roots before the dry summer, and the Summer entry should focus on maintenance and watering of already-established plants rather than new planting, since planting new drought-adapted natives at the start of the dry season would require heavy irrigation that defeats the purpose of native landscaping. A maintenance-only Summer is still REQUIRED to appear as its own labeled entry — never omit it or fold it into another season just because it has no new planting. In climates with summer rainfall or without a pronounced dry season, choose the primary planting season appropriate to that climate using the same logic — never schedule the establishment of new plants at the start of that region\'s hottest or driest stretch. FORMAT: each season header must be plain text with no leading bullet, dash, or asterisk — exactly the season and months, e.g. \"Fall (September–November):\" alone on its own line. Immediately below each header, list one or more separate action items, each on its own line starting with \"- \" (a dash and a space) — never merge multiple actions into one unbulleted paragraph. Each bullet must name specific plants from your recommendation list above and the exact action to take with them. Do not give generic advice. If instructing to scatter or broadcast any seed, always also state how to cover or press it into the soil for proper seed-to-soil contact — scattering alone is never a complete instruction. If a recommended plant\'s moisture needs conflict with a stated site condition (e.g. a moisture-loving plant recommended for a dry-shade site under mature conifers), note the extra care it will need (such as supplemental summer watering) rather than ignoring the conflict. FINAL CHECK — before writing the SPECIES COUNT line, re-read your PLANTING TIMELINE section and confirm it contains exactly four season headers in this order: \"Fall\", \"Winter\", \"Spring\", \"Summer\". If any one of the four is missing, add the missing season now before finishing your response — do not submit a timeline with fewer than four seasons.]\n\nSPECIES COUNT: [number only]';
+        var prompt = 'You are SmartScape, an expert in native plants and climate-resilient landscaping for all US regions.\n\nSite details:\n- Zip code: '+zip+'\n'+locationLine+ecoregionLine+'- Yard size: '+sizeLabel+'\n- Sun exposure: '+sun+'\n'+(elevation ? '- Elevation: '+elevationEl.options[elevationEl.selectedIndex].text+'\n' : '')+'- Goals: '+goals+'\n'+(imgData?'- A photo of the site has been uploaded and included.\n':'')+'\nCRITICAL: All plant recommendations must be genuinely native to the SPECIFIC ecoregion listed above — not just the general state or region. A plant native to California is NOT acceptable for a Willamette Valley site. A plant native to Eastern Oregon is NOT acceptable for a Portland metro or Willamette Valley site. Use the EPA ecoregion to select plants with precision. If elevation is provided, select plants specifically suited to that elevation range — do not recommend lowland plants for mid or high elevation sites, or vice versa. Never state or imply a regional wildfire risk level (for example, describing an area as a low-risk or high-risk wildfire zone) anywhere in your response. TREE DIVERSITY RULE: For the Canopy/Trees layer, always select from the full range of tree species genuinely native to the specific ecoregion — never default to the single most iconic or most commonly-cited tree for that region across every recommendation. For example, in the Willamette Valley ecoregion, Oregon white oak (Quercus garryana) is a valid choice but is NOT the only valid choice — Cascara (Frangula purshiana), Douglas fir (Pseudotsuga menziesii), bigleaf maple (Acer macrophyllum), western red cedar (Thuja plicata), Grand fir (Abies grandis), Pacific dogwood (Cornus nuttallii), red alder (Alnus rubra), and vine maple (Acer circinatum) are all genuinely native and appropriate depending on site conditions and goals. Apply this same principle of genuine species diversity to every ecoregion covered — vary tree selection based on the specific site\'s sun, moisture, elevation, and goals rather than repeating the same default species run after run. REGIONAL PEST & DISEASE RULE: When a tree or shrub species has a well-documented, currently active, incurable pest or disease problem affecting a meaningful portion of its range, do not recommend it as an uncaveated primary pick. For example, emerald ash borer is now established in parts of Oregon and is fatal to all native ash species, including Oregon ash (Fraxinus latifolia), with no available cure — do not recommend Oregon ash as a straightforward pick in or near affected areas; choose a genuinely native alternative tree instead. If the threat is only established in part of the region and the specific site may plausibly be unaffected, you may still include the species but must add a plain-language caveat naming the threat and noting that a genuinely native alternative may be a safer long-term choice. Apply this same caution to any other tree or shrub species with a similarly well-documented, currently active, incurable regional threat.'+(realCity?' The SITE ANALYSIS must refer to the city/town as "'+realCity+', '+realState+'" exactly as given above — do not guess a different city name.':'')+'\n\nWRITING STYLE RULES (apply to every plant description, always): Write in plain, everyday language a non-expert homeowner would understand — avoid horticultural or technical jargon (for example, instead of "low-fuel structure" say something like "doesn\'t build up thick, dry, dead plant material that can fuel fires". Whenever you mention a plant supporting pollinators, wildlife, or a nectar/food source, always name specifically who benefits (e.g. "a nectar source for hummingbirds and native bees" — never just "a nectar source" with no audience named) — this applies within the descriptive sentence itself, not only in the trailing Attracts: tag. Never describe a fruit or berry color using a comparison that could be confused with a specific named commercial fruit (e.g. do not say "blue berries", since it reads as the fruit blueberry — just say "berries", or describe use like "for jelly/syrup" instead of color. Never describe a fruit/berry color that changes through ripening (e.g. yellow to blue to purple) as if it were one fixed color — if a color isn\'t stable through ripening, omit the color rather than naming one stage of it. PLANT-SPECIFIC ACCURACY NOTE: Wild Ginger (Asarum species) is a moisture-loving woodland plant that does NOT thrive in true dry shade — if you recommend it for a site with dry shade under mature conifers, you MUST say so explicitly, e.g. note that it will need supplemental watering through the dry season when planted in that situation, rather than describing it as well-suited to dry shade without qualification. Never insert a divider line of dashes, underscores, or asterisks (e.g. \"---\" or \"--\") anywhere in your response, including between sections — use only the exact section labels given below to separate content. CRITICAL: Output ONLY your final, fully-considered answer. Never show your reasoning process, self-corrections, or second-guessing anywhere in the response — do not write phrases like wait, actually, let me reconsider, or substituting with followed by a replacement choice. If you decide partway through that a plant does not fit, work that out silently and write only the final plant you settled on, with no visible trace of the earlier choice or the substitution itself.'+photoCheckInstruction+hawaiiInstructions+'\n\nRespond in EXACTLY this format:\n\nSITE ANALYSIS:\n[2-3 sentences: climate zone, typical soil and rainfall, any photo observations. Be specific to this region.]\n\nRECOMMENDED NATIVE PLANTS:\n[Group these 8-12 plants into landscaping layers using this exact structure: a LAYER line before each group, choosing only from these layer names as needed, and always output the groups in this exact order — easiest/smallest commitment first, biggest last: LAYER: Groundcover, LAYER: Wildflowers & Grasses, LAYER: Shrubs & Bushes, LAYER: Canopy/Trees. Only include a LAYER line if that group has at least one plant. Aim for 8-12 plants total; if fewer plants genuinely satisfy all selected goals for this region, provide as many as legitimately qualify, but never fewer than 5. Under each LAYER line, list each plant on its own line:\n- Common Name (Scientific name) — one sentence why it fits this site, sun exposure, and goals. MATURE SIZE: Immediately after that sentence, include the plant\'s approximate mature size in plain language (e.g. "Mature size: grows to 15–25 ft tall and 10 ft wide" or "Mature size: reaches 2–3 ft tall and spreads slowly to form a groundcover mat"). INDIGENOUS USE NOTE: Immediately after the mature size, add one brief sentence noting a documented Indigenous use of that species (for example food, medicine, fiber, dye, or utilitarian use), consistent with well-established ethnobotanical references such as the Native American Ethnobotany Database (Moerman) — keep this factual and general, do not attribute a use to a specific tribe or nation unless it is well-documented and broadly agreed upon, and if a plant\'s Indigenous use is not well known, omit this note for that plant rather than guessing. If Water savings is a selected goal, only recommend plants that are drought-tolerant or low-water once established; do not recommend species that need supplemental irrigation through the dry season. Wild Ginger (Asarum caudatum) is explicitly excluded from any recommendation list when Water savings is a selected goal, regardless of site conditions — never include it in that case. For shaded or partially shaded sites where Water savings is a selected goal and a groundcover is needed, select a genuinely drought-tolerant groundcover species that is native to the SPECIFIC ecoregion identified above — never default to a fixed, memorized shortlist of species regardless of region; the correct choice varies by ecoregion and must be selected fresh each time based on that ecoregion\'s actual native flora, not reused from one region to another. SOIL & DRAINAGE MATCH RULE: Every recommended plant\'s known soil-moisture and drainage preference must genuinely match the soil and drainage conditions you describe in your own SITE ANALYSIS for this site — for example, do not recommend a plant that requires dry, well-drained, sandy soil for a site you have described as having poorly-drained clay soil, and do not recommend a plant that requires consistently moist soil for a site you have described as dry and well-drained. If no plant genuinely fits both the ecoregion and the described soil/drainage conditions for a given layer, say so explicitly in that plant\'s description rather than presenting a poor match as seamless. If Pollinators is a selected goal, only recommend plants with a meaningful pollinator or wildlife value (nectar, larval host, seed/berry food source), and the Attracts note must name the specific species or type it supports — but only name a specific species (for example \"monarch butterflies\") when that plant is a well-documented nectar or host source for that exact species; if a plant only attracts butterflies or pollinators generally, without species-specific documentation, use a broader but still concrete term such as \"native butterflies\" or \"swallowtail and other butterflies\" rather than guessing a named species. Monarch butterflies specifically have narrow, well-documented needs — milkweed (Asclepias) species are their only larval host, and their adult nectar sources are a specific, limited list that includes plants such as Blazing Star/Liatris, goldenrod, and asters — never name \"monarch butterflies\" in an Attracts note or anywhere in a plant description unless the plant is genuinely a documented monarch host or nectar source. If Fire resistance is a selected goal, explain the specific low-flammability or fire-resistant characteristic of that plant (such as high moisture content, low resin/oil content, or minimal dead material buildup) rather than referencing regional wildfire risk. If Low maintenance is a selected goal, only recommend plants that are non-aggressive spreaders and do not require regular pruning, dividing, or staking once established. If Color & beauty is a selected goal, only recommend plants with a distinct, showy bloom period, and note the approximate bloom season in the description. If Food production is a selected goal, only recommend plants that produce human- or wildlife-edible fruit, nuts, or berries, and name what is edible in the description. Attracts: [specific pollinators, birds, or wildlife this plant supports]. End the line with "Lifecycle: Perennial." or "Lifecycle: Annual." or "Lifecycle: Biennial." based on the actual life cycle of that plant.]\n\nPLANTING TIMELINE:\n[Exactly 4 entries, one per season, in this order: Fall, Winter, Spring, Summer — all four are mandatory; a timeline missing any one of the four seasons is incorrect, even if that season involves only maintenance and no new planting. CRITICAL — before writing the timeline, determine the ecologically correct PRIMARY planting season for this specific climate/ecoregion: in Mediterranean or dry-summer climates (e.g. Pacific Northwest west of the Cascades, coastal and inland California), Fall is the primary planting season — most new plants should go in the ground in fall so autumn rain establishes deep roots before the dry summer, and the Summer entry should focus on maintenance and watering of already-established plants rather than new planting, since planting new drought-adapted natives at the start of the dry season would require heavy irrigation that defeats the purpose of native landscaping. A maintenance-only Summer is still REQUIRED to appear as its own labeled entry — never omit it or fold it into another season just because it has no new planting. In climates with summer rainfall or without a pronounced dry season, choose the primary planting season appropriate to that climate using the same logic — never schedule the establishment of new plants at the start of that region\'s hottest or driest stretch. FORMAT: each season header must be plain text with no leading bullet, dash, or asterisk — exactly the season and months, e.g. \"Fall (September–November):\" alone on its own line. Immediately below each header, list one or more separate action items, each on its own line starting with \"- \" (a dash and a space) — never merge multiple actions into one unbulleted paragraph. Each bullet must name specific plants from your recommendation list above and the exact action to take with them. Do not give generic advice. If instructing to scatter or broadcast any seed, always also state how to cover or press it into the soil for proper seed-to-soil contact — scattering alone is never a complete instruction. If a recommended plant\'s moisture needs conflict with a stated site condition (e.g. a moisture-loving plant recommended for a dry-shade site under mature conifers), note the extra care it will need (such as supplemental summer watering) rather than ignoring the conflict. FINAL CHECK — before writing the SPECIES COUNT line, re-read your PLANTING TIMELINE section and confirm it contains exactly four season headers in this order: \"Fall\", \"Winter\", \"Spring\", \"Summer\". If any one of the four is missing, add the missing season now before finishing your response — do not submit a timeline with fewer than four seasons.]\n\nSPECIES COUNT: [number only]';
         var messages = [{
             role: 'user',
             content: imgData ? [{
