@@ -1319,7 +1319,7 @@
                     </select>
                 </div>
             </div>
-            <button class="btn-primary" onclick="goTo(1)">Choose your goals →</button>
+            <button class="btn-primary" onclick="goToGoals()">Choose your goals →</button>
         </div>
         <div class="screen" id="s1">
             <div class="section-label">Step 2 of 3</div>
@@ -1328,7 +1328,7 @@
                 <br>
                 most to you?
             </div>
-            <div class="section-sub">Select all that apply. Your Greenprint will prioritize these goals. Selecting more goals narrows your list to plants that fit them all.</div>
+            <div class="section-sub">Select at least one goal that matters to you. Your Greenprint will prioritize these goals. Selecting more goals narrows your list to plants that fit them all.</div>
             <div class="goal-grid">
                 <div class="goal-card" onclick="this.classList.toggle('sel')">
                     <span class="goal-icon">🐝</span>
@@ -1826,6 +1826,15 @@
         el.classList.add('on');
         renderNurseries(f);
     }
+    function goToGoals() {
+        var zip = document.getElementById('zip').value.trim();
+        if (!zip) {
+            alert('Please enter your zip code before continuing.');
+            document.getElementById('zip').focus();
+            return;
+        }
+        goTo(1);
+    }
     function goTo(n) {
         document.querySelectorAll('.screen').forEach(function(s) {
             s.classList.remove('active');
@@ -2163,6 +2172,10 @@
         var zip = document.getElementById('zip').value.trim();
         if (!zip) {
             alert('Please enter your zip code.');
+            return;
+        }
+        if (document.querySelectorAll('.goal-card.sel').length === 0) {
+            alert('Please choose at least one goal.');
             return;
         }
         currentZip = zip;
