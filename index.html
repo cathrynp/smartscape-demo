@@ -1374,11 +1374,11 @@
                 <div class="analyze-steps">
                     <div class="astep" id="as0">
                         <div class="astep-dot"></div>
-                        Analyzing site photo with Claude AI
+                        Identifying USDA ecoregion for your zip code
                     </div>
                     <div class="astep" id="as1">
                         <div class="astep-dot"></div>
-                        Identifying USDA ecoregion for your zip code
+                        Analyzing site photo with Claude AI
                     </div>
                     <div class="astep" id="as2">
                         <div class="astep-dot"></div>
@@ -1469,6 +1469,7 @@
                 <div class="result-card-body">
                     <div class="filter-bar" id="filter-bar"></div>
                     <div id="nursery-list"></div>
+                    <p style="font-size:12px;color:var(--warm-gray);margin-top:10px;padding:0 4px;">💌 Want this Greenprint emailed to you? That's a feature of the full Greenprint app — <a href="https://greenprint-subscriber.netlify.app" target="_blank" rel="noopener">open it here</a>.</p>
                 </div>
             </div>
             <div class="cta-box">
@@ -2266,7 +2267,7 @@
             var pt = text.match(/PLANTING TIMELINE:\n([\s\S]*?)(?=SPECIES COUNT:|$)/);
             var sc = text.match(/SPECIES COUNT:\s*(\d+)/);
             document.getElementById('r-title').textContent = 'Greenprint · Zip ' + zip;
-            document.getElementById('r-sub').textContent = 'Your native plant plan for ' + sun + ' · ' + sizeLabel + (elevationText ? ' · Elevation: ' + elevationText : '') + ' · Goals: ' + goals;
+            document.getElementById('r-sub').innerHTML = 'Your native plant plan for ' + sun + ' · ' + sizeLabel + (elevationText ? ' · Elevation: ' + elevationText : '') + '<br>Goals: ' + goals;
             document.getElementById('r-rec-sub').textContent = 'Native plants matched to zip ' + zip + ' and your goals';
             document.getElementById('r-layout-sub').textContent = 'Suggested planting arrangement · ' + sizeLabel;
             document.getElementById('r-site').textContent = sa ? sa[1].trim() : 'Site analysis complete.';
