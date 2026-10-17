@@ -108,41 +108,74 @@ function parseJson(s) {
 }
 
 function reviewPrompt(siteDetails, lines) {
-  return 'You are a careful native-plant fact checker for a landscaping app. Check the plants below against the site details. Be conservative: flag a plant ONLY when you are confident there is a real error. Do not rewrite for style.\n\n' +
+  return 'You are a strict native-plant fact checker for a landscaping app. Check the plants below against the site details. Flag anything you have good reason to doubt, and fix it. A wrong or doubtful plant is worse than a replaced plant, so when unsure whether a plant is truly native to this specific area, replace it with one you are sure of. Do not rewrite for style.\n\n' +
     'SITE DETAILS:\n' + siteDetails + '\n\n' +
-    'CHECK EACH PLANT FOR: the scientific name truly belongs to the common name; it is native to the specific ecoregion/zip; its light, soil, drainage and moisture needs fit the site and sun (wetland plants do not fit dry sites or Water savings); size, wildlife and insect claims are well established; state-listed endangered plants carry a sourcing note; tree size fits the yard size.\n\n' +
+    'CHECK EVERY PLANT FOR:\n' +
+    '1. NAME: the scientific name truly belongs to the common name given, and the common name is the standard one.\n' +
+    '2. NATIVE RANGE: native to the specific county/ecoregion of this zip code, not merely somewhere in the state (plants native only to another part of the state must be replaced).\n' +
+    '3. HABITAT: light, soil, drainage and moisture needs fit the site and sun selected; moisture-loving, shade-loving or wetland plants do not fit a dry sunny site or a Water savings goal.\n' +
+    '4. LIFECYCLE: the Lifecycle tag is correct (annual vs perennial vs biennial).\n' +
+    '5. LAYER: the plant sits under the right LAYER line for its real height and form (herbaceous wildflowers are not Shrubs & Bushes; Groundcover only if under about 1 foot).\n' +
+    '6. CLAIMS: size, wildlife and insect statements are well documented; delete or fix unverified claims (for example about ladybugs or parasitic wasps); milkweed must be locally native.\n' +
+    '7. State-listed endangered or threatened plants carry a short sourcing note (buy only nursery-propagated stock).\n' +
+    '8. Tree size fits the yard size.\n\n' +
     'KNOWN MISTAKES TO CATCH:\n- ' + KNOWN_MISTAKES.join('\n- ') + '\n\n' +
     'PLANTS (numbered):\n' + lines.map(function (l, i) { return (i + 1) + '. ' + l; }).join('\n') + '\n\n' +
-    'Reply with ONLY a JSON object: {"plant_fixes":[{"n":<plant number>,"new_line":"<complete corrected plant line starting with \\"- \\", in the EXACT same format and similar length as the original, ending with its Attracts: and Lifecycle: tags>"}]}. If a plant does not fit the site, replace it with a different native plant that does fit (same layer, not already listed) written in the same format. If nothing needs fixing return {"plant_fixes":[]}.';
+    'Reply with ONLY a JSON object: {"notes":"<one short sentence per problem found, or \\"none\\">","plant_fixes":[{"n":<plant number>,"layer":"<only if the layer is wrong>","new_line":"<complete corrected plant line starting with \\"- \\", in the EXACT same format and similar length as the original, ending with its Attracts: and Lifecycle: tags>"}]}. If a plant does not fit the site or area, replace it with a different plant native to this specific area that fits the site (not already listed) written in the same format. If a plant is under the wrong layer but is otherwise fine, keep the line as it is and add "layer":"<Groundcover | Wildflowers & Grasses | Shrubs & Bushes | Canopy/Trees>" to that fix entry (new_line may then be the unchanged line). If nothing needs fixing return {"notes":"none","plant_fixes":[]}.';
+}
+
+const LAYERS = ['Groundcover', 'Wildflowers & Grasses', 'Shrubs & Bushes', 'Canopy/Trees'];
+
+// Re-label the LAYER heading above a plant line, only when that plant is alone in its group.
+function relabelLayer(out, line, layer) {
+  const idx = out.indexOf(line);
+  if (idx === -1) return out;
+  const before = out.slice(0, idx);
+  const hm = before.lastIndexOf('LAYER:');
+  if (hm === -1) return out;
+  const hEnd = out.indexOf('\n', hm);
+  const nextLayer = out.indexOf('LAYER:', idx);
+  const groupEnd = nextLayer === -1 ? out.length : nextLayer;
+  const groupLines = out.slice(hEnd, groupEnd).split('\n').filter(function (l) { return l.trim().startsWith('-'); });
+  if (groupLines.length !== 1) return out;
+  return out.slice(0, hm) + 'LAYER: ' + layer + out.slice(hEnd);
 }
 
 async function review(apiKey, text, siteDetails) {
   const lines = plantLines(text);
-  if (!lines.length) return { text: text, changed: 0, usage: [] };
+  if (!lines.length) return { text: text, changed: 0, usage: [], ran: false };
   const usage = [];
+  let lastNotes = '';
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
-      const r = await callClaude(apiKey, STRONG, 1800, [{ role: 'user', content: reviewPrompt(siteDetails, lines) }]);
+      const r = await callClaude(apiKey, STRONG, 2500, [{ role: 'user', content: reviewPrompt(siteDetails, lines) }]);
       usage.push(r.usage);
       const rv = parseJson(r.text);
-      if (!rv) continue;
+      if (!rv) { lastNotes = 'unparseable reply'; continue; }
       let out = text, changed = 0;
-      (Array.isArray(rv.plant_fixes) ? rv.plant_fixes : []).forEach(function (f) {
+      const fixes = Array.isArray(rv.plant_fixes) ? rv.plant_fixes : [];
+      fixes.forEach(function (f) {
         const n = parseInt(f && f.n, 10);
+        if (!(n >= 1 && n <= lines.length)) return;
         const nl = f && typeof f.new_line === 'string' ? f.new_line.trim() : '';
-        if (!(n >= 1 && n <= lines.length) || !nl) return;
-        if (nl.indexOf('\n') !== -1 || nl.length > 1800 || nl.length < 80 || !nl.startsWith('- ')) return;
-        if (!/\([^)]+\)/.test(nl) || nl.indexOf('Attracts:') === -1 || !/Lifecycle:\s*(Perennial|Annual|Biennial)/i.test(nl)) return;
-        if (out.indexOf(lines[n - 1]) === -1) return;
-        out = out.replace(lines[n - 1], function () { return nl; });
-        lines[n - 1] = nl;
-        changed++;
+        const orig = lines[n - 1];
+        let cur = orig;
+        if (nl && nl !== orig && nl.indexOf('\n') === -1 && nl.length <= 1800 && nl.length >= 80 && nl.startsWith('- ') &&
+            /\([^)]+\)/.test(nl) && nl.indexOf('Attracts:') !== -1 && /Lifecycle:\s*(Perennial|Annual|Biennial)/i.test(nl) && out.indexOf(orig) !== -1) {
+          out = out.replace(orig, function () { return nl; });
+          lines[n - 1] = nl; cur = nl; changed++;
+        }
+        if (f && typeof f.layer === 'string' && LAYERS.indexOf(f.layer) !== -1) {
+          const relabeled = relabelLayer(out, cur, f.layer);
+          if (relabeled !== out) { out = relabeled; changed++; }
+        }
       });
-      if (changed && structureProblem(out, false)) return { text: text, changed: 0, usage: usage };
-      return { text: out, changed: changed, usage: usage };
-    } catch (e) { console.log('Reviewer attempt ' + (attempt + 1) + ' failed: ' + e.message); }
+      const notes = String(rv.notes || '').slice(0, 1200);
+      if (changed && structureProblem(out, false)) return { text: text, changed: 0, usage: usage, ran: true, notes: notes, proposed: fixes.length, discarded: true };
+      return { text: out, changed: changed, usage: usage, ran: true, notes: notes, proposed: fixes.length };
+    } catch (e) { console.log('Reviewer attempt ' + (attempt + 1) + ' failed: ' + e.message); lastNotes = 'error: ' + e.message.slice(0, 100); }
   }
-  return { text: text, changed: 0, usage: usage };
+  return { text: text, changed: 0, usage: usage, ran: true, notes: lastNotes || 'reviewer failed', proposed: 0, failed: true };
 }
 
 exports.handler = async function (event) {
@@ -168,6 +201,7 @@ exports.handler = async function (event) {
     catch (e) { console.log('Haiku failed, using Sonnet: ' + e.message); w = await callClaude(API_KEY, STRONG, 1800, messages); }
     let text = w.text;
     const usageLog = [{ model: WRITER, u: w.usage }];
+    let reviewInfo = { reviewerRan: false };
 
     if (!/PHOTO_MISMATCH:/.test(text)) {
       const problem = structureProblem(text, w.truncated);
@@ -185,13 +219,18 @@ exports.handler = async function (event) {
       text = applyCodeFixes(text);
       if (!structureProblem(text, false) || plantLines(text).length) {
         const rv = await review(API_KEY, text, siteDetails);
+        reviewInfo = { reviewerRan: !!rv.ran, reviewerFailed: !!rv.failed, reviewerProposed: rv.proposed || 0, reviewerApplied: rv.changed, reviewerNotes: rv.notes || '' };
         text = applyCodeFixes(rv.text);
         rv.usage.forEach(function (u) { usageLog.push({ model: STRONG, u: u }); });
       }
     }
 
     console.log('DEMO USAGE ' + JSON.stringify(usageLog));
-    await store.setJSON(jobId, { status: 'done', body: JSON.stringify({ content: [{ type: 'text', text: text }] }) });
+    const PRICE = { 'claude-haiku-4-5-20251001': [1, 5], 'claude-sonnet-4-6': [3, 15] };
+    let cost = 0;
+    usageLog.forEach(function (e) { const p = PRICE[e.model] || [3, 15]; cost += ((e.u && e.u.input_tokens) || 0) * p[0] / 1e6 + ((e.u && e.u.output_tokens) || 0) * p[1] / 1e6; });
+    const debug = Object.assign({ cost: Math.round(cost * 10000) / 10000, calls: usageLog.map(function (e) { return e.model.split('-')[1]; }) }, reviewInfo);
+    await store.setJSON(jobId, { status: 'done', debug: debug, body: JSON.stringify({ content: [{ type: 'text', text: text }] }) });
   } catch (err) {
     console.log('Error:', err.message);
     if (jobId) {
