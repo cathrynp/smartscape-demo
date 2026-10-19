@@ -6,8 +6,29 @@
 
 const { connectLambda, getStore } = require('@netlify/blobs');
 
-const WRITER = 'claude-haiku-4-5-20251001';
-const STRONG = 'claude-sonnet-4-6';
+// ============ MODEL SETTINGS — the one place to change models ============
+// Rule: use the lowest-cost model that works for each job. Each list is tried in order; if Anthropic rejects
+// a model ID (retired / unknown), the next one is used automatically. Cheapest first.
+// Prices ($ per million tokens: input, output) last checked 2026-10-18. Unknown models are costed at the highest price.
+const PRICES = {
+  'claude-haiku-5-5': [0.10, 0.50],
+  'claude-haiku-4-5-20251001': [1, 5],
+  'claude-sonnet-5-5': [2, 10],
+  'claude-sonnet-4-6': [3, 15]
+};
+const CHEAP = ['claude-haiku-5-5', 'claude-haiku-4-5-20251001'];
+const STRONGER = ['claude-sonnet-5-5', 'claude-sonnet-4-6'];
+// The 5.5 models think by default and bill thinking as output, so thinking is switched off (Haiku 5.5) or set to its lowest setting (Sonnet 5.5).
+// If the API rejects these options the call is retried without them.
+const MODEL_OPTS = {
+  'claude-haiku-5-5': { thinking: { type: 'disabled' }, output_config: { effort: 'medium' } },
+  'claude-sonnet-5-5': { thinking: { type: 'between_tools' }, output_config: { effort: 'medium' } }
+};
+const OPTS_REJECTED = {};
+const DEAD_MODELS = {};
+const WRITER = CHEAP;     // writes the 2 shown plants
+const STRONG = STRONGER;  // fact-checker, and the rewrite if the writer's output fails the structure check
+// ========================================================================
 const PROMPT_SENTINEL = 'You are SmartScape, an expert in native plants and climate-resilient landscaping';
 const SHOWN = 2;
 
@@ -48,28 +69,41 @@ function validateRequest(incoming) {
   return null;
 }
 
-async function callClaude(apiKey, model, maxTokens, messages) {
+async function callClaude(apiKey, modelOrList, maxTokens, messages) {
+  let models = Array.isArray(modelOrList) ? modelOrList : [modelOrList];
+  const alive = models.filter(function (m) { return !DEAD_MODELS[m]; });
+  if (alive.length) models = alive;
   let lastErr;
-  for (let attempt = 0; attempt < 3; attempt++) {
-    try {
-      const resp = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01' },
-        body: JSON.stringify({ model: model, max_tokens: maxTokens, messages: messages })
-      });
-      const raw = await resp.text();
-      if (resp.status === 200) {
-        const parsed = JSON.parse(raw);
-        return {
-          text: (parsed.content && parsed.content[0] && parsed.content[0].text) || '',
-          truncated: parsed.stop_reason === 'max_tokens',
-          usage: parsed.usage || {}
-        };
-      }
-      lastErr = new Error('Anthropic ' + resp.status + ': ' + raw.slice(0, 200));
-      if (resp.status < 500 && resp.status !== 429) break;
-    } catch (e) { lastErr = e; }
-    await new Promise(function (r) { setTimeout(r, 2000 * (attempt + 1)); });
+  for (let mi = 0; mi < models.length; mi++) {
+    const model = models[mi];
+    let modelRejected = false;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        const body = { model: model, max_tokens: maxTokens, messages: messages };
+        if (MODEL_OPTS[model] && !OPTS_REJECTED[model]) Object.assign(body, MODEL_OPTS[model]);
+        const resp = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01' },
+          body: JSON.stringify(body)
+        });
+        const raw = await resp.text();
+        if (resp.status === 200) {
+          const parsed = JSON.parse(raw);
+          // answer = the text blocks only (newer models may put a thinking block first)
+          const blocks = Array.isArray(parsed.content) ? parsed.content : [];
+          const text = blocks.filter(function (b) { return b && b.type === 'text'; }).map(function (b) { return b.text || ''; }).join('');
+          if (!text.trim()) { lastErr = new Error('Empty reply from ' + model + ' (stop: ' + parsed.stop_reason + ')'); break; }
+          return { text: text, truncated: parsed.stop_reason === 'max_tokens', usage: parsed.usage || {}, model: model };
+        }
+        if (resp.status === 400 && /thinking|effort|output_config/i.test(raw) && MODEL_OPTS[model] && !OPTS_REJECTED[model]) { OPTS_REJECTED[model] = true; lastErr = new Error('Anthropic 400 (' + model + ') options'); attempt--; continue; }
+        lastErr = new Error('Anthropic ' + resp.status + ' (' + model + '): ' + raw.slice(0, 200));
+        if (resp.status === 404 || (resp.status === 400 && /model/i.test(raw))) { modelRejected = true; DEAD_MODELS[model] = true; break; }
+        if (resp.status < 500 && resp.status !== 429) break;
+      } catch (e) { lastErr = e; }
+      await new Promise(function (r) { setTimeout(r, 2000 * (attempt + 1)); });
+    }
+    if (!modelRejected && mi < models.length - 1 && lastErr && /Anthropic (5|429)|Empty reply/.test(String(lastErr.message))) continue;
+    if (!modelRejected) break;
   }
   throw lastErr || new Error('Anthropic call failed');
 }
@@ -145,11 +179,12 @@ async function review(apiKey, text, siteDetails) {
   const lines = plantLines(text);
   if (!lines.length) return { text: text, changed: 0, usage: [], ran: false };
   const usage = [];
+  const detail = { raws: [], decisions: [] };
   let lastNotes = '';
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
       const r = await callClaude(apiKey, STRONG, 2500, [{ role: 'user', content: reviewPrompt(siteDetails, lines) }]);
-      usage.push(r.usage);
+      usage.push({ model: r.model, u: r.usage }); detail.raws.push((r.text || '').slice(0, 6000));
       const rv = parseJson(r.text);
       if (!rv) { lastNotes = 'unparseable reply'; continue; }
       let out = text, changed = 0;
@@ -164,6 +199,9 @@ async function review(apiKey, text, siteDetails) {
             /\([^)]+\)/.test(nl) && nl.indexOf('Attracts:') !== -1 && /Lifecycle:\s*(Perennial|Annual|Biennial)/i.test(nl) && out.indexOf(orig) !== -1) {
           out = out.replace(orig, function () { return nl; });
           lines[n - 1] = nl; cur = nl; changed++;
+          detail.decisions.push('plant ' + n + ': replacement accepted');
+        } else if (nl && nl !== orig) {
+          detail.decisions.push('plant ' + n + ': replacement REJECTED (' + (nl.indexOf('\n') !== -1 ? 'multi-line' : nl.length > 1800 ? 'too long' : nl.length < 80 ? 'too short' : !nl.startsWith('- ') ? 'no "- " start' : nl.indexOf('Attracts:') === -1 || !/Lifecycle:\s*(Perennial|Annual|Biennial)/i.test(nl) ? 'missing Attracts/Lifecycle tag' : 'bad format or original not found') + ')');
         }
         if (f && typeof f.layer === 'string' && LAYERS.indexOf(f.layer) !== -1) {
           const relabeled = relabelLayer(out, cur, f.layer);
@@ -171,8 +209,8 @@ async function review(apiKey, text, siteDetails) {
         }
       });
       const notes = String(rv.notes || '').slice(0, 1200);
-      if (changed && structureProblem(out, false)) return { text: text, changed: 0, usage: usage, ran: true, notes: notes, proposed: fixes.length, discarded: true };
-      return { text: out, changed: changed, usage: usage, ran: true, notes: notes, proposed: fixes.length };
+      if (changed && structureProblem(out, false)) return { text: text, changed: 0, usage: usage, ran: true, notes: notes, proposed: fixes.length, discarded: true, detail: detail };
+      return { text: out, changed: changed, usage: usage, ran: true, notes: notes, proposed: fixes.length, detail: detail };
     } catch (e) { console.log('Reviewer attempt ' + (attempt + 1) + ' failed: ' + e.message); lastNotes = 'error: ' + e.message.slice(0, 100); }
   }
   return { text: text, changed: 0, usage: usage, ran: true, notes: lastNotes || 'reviewer failed', proposed: 0, failed: true };
@@ -200,7 +238,8 @@ exports.handler = async function (event) {
     try { w = await callClaude(API_KEY, WRITER, 1800, messages); }
     catch (e) { console.log('Haiku failed, using Sonnet: ' + e.message); w = await callClaude(API_KEY, STRONG, 1800, messages); }
     let text = w.text;
-    const usageLog = [{ model: WRITER, u: w.usage }];
+    const usageLog = [{ model: w.model, u: w.usage }];
+    const writerText = text;
     let reviewInfo = { reviewerRan: false };
 
     if (!/PHOTO_MISMATCH:/.test(text)) {
@@ -212,24 +251,23 @@ exports.handler = async function (event) {
             { role: 'assistant', content: text },
             { role: 'user', content: problem + ' Provide your complete response again in the exact same format: SITE ANALYSIS, then RECOMMENDED NATIVE PLANTS with exactly ' + SHOWN + ' plants (each ending with its own "Attracts: [...]" and "Lifecycle: [...]." tags), then a final line "TOTAL PLANTS: [number]". No timeline.' }
           ]));
-          usageLog.push({ model: STRONG, u: r.usage });
+          usageLog.push({ model: r.model, u: r.usage });
           if (!structureProblem(r.text, r.truncated) || structureProblem(text, w.truncated)) text = r.text;
         } catch (e) { console.log('Sonnet retry failed: ' + e.message); }
       }
       text = applyCodeFixes(text);
       if (!structureProblem(text, false) || plantLines(text).length) {
         const rv = await review(API_KEY, text, siteDetails);
-        reviewInfo = { reviewerRan: !!rv.ran, reviewerFailed: !!rv.failed, reviewerProposed: rv.proposed || 0, reviewerApplied: rv.changed, reviewerNotes: rv.notes || '' };
+        reviewInfo = { reviewRaw: rv.detail ? rv.detail.raws : [], decisions: rv.detail ? rv.detail.decisions : [], reviewerRan: !!rv.ran, reviewerFailed: !!rv.failed, reviewerProposed: rv.proposed || 0, reviewerApplied: rv.changed, reviewerNotes: rv.notes || '' };
         text = applyCodeFixes(rv.text);
-        rv.usage.forEach(function (u) { usageLog.push({ model: STRONG, u: u }); });
+        rv.usage.forEach(function (x) { usageLog.push(x); });
       }
     }
 
     console.log('DEMO USAGE ' + JSON.stringify(usageLog));
-    const PRICE = { 'claude-haiku-4-5-20251001': [1, 5], 'claude-sonnet-4-6': [3, 15] };
     let cost = 0;
-    usageLog.forEach(function (e) { const p = PRICE[e.model] || [3, 15]; cost += ((e.u && e.u.input_tokens) || 0) * p[0] / 1e6 + ((e.u && e.u.output_tokens) || 0) * p[1] / 1e6; });
-    const debug = Object.assign({ cost: Math.round(cost * 10000) / 10000, calls: usageLog.map(function (e) { return e.model.split('-')[1]; }) }, reviewInfo);
+    usageLog.forEach(function (e) { const p = PRICES[e.model] || [3, 15]; cost += ((e.u && e.u.input_tokens) || 0) * p[0] / 1e6 + ((e.u && e.u.output_tokens) || 0) * p[1] / 1e6; });
+    const debug = Object.assign({ cost: Math.round(cost * 10000) / 10000, calls: usageLog.map(function (e) { return e.model; }), writerRaw: writerText.slice(0, 6000), finalText: text.slice(0, 6000) }, reviewInfo);
     await store.setJSON(jobId, { status: 'done', debug: debug, body: JSON.stringify({ content: [{ type: 'text', text: text }] }) });
   } catch (err) {
     console.log('Error:', err.message);
