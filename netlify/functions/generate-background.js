@@ -241,18 +241,20 @@ exports.handler = async function (event) {
     const usageLog = [{ model: w.model, u: w.usage }];
     const writerText = text;
     let reviewInfo = { reviewerRan: false };
+    let structureNote = '';
 
     if (!/PHOTO_MISMATCH:/.test(text)) {
       const problem = structureProblem(text, w.truncated);
       if (problem) {
         console.log('Demo structure problem: ' + problem + ' — Sonnet retry.');
+        structureNote = problem + (w.truncated ? ' [writer reply was cut off at the token limit]' : '');
         try {
           const r = await callClaude(API_KEY, STRONG, 1800, messages.concat([
             { role: 'assistant', content: text },
             { role: 'user', content: problem + ' Provide your complete response again in the exact same format: SITE ANALYSIS, then RECOMMENDED NATIVE PLANTS with exactly ' + SHOWN + ' plants (each ending with its own "Attracts: [...]" and "Lifecycle: [...]." tags), then a final line "TOTAL PLANTS: [number]". No timeline.' }
           ]));
           usageLog.push({ model: r.model, u: r.usage });
-          if (!structureProblem(r.text, r.truncated) || structureProblem(text, w.truncated)) text = r.text;
+          if (!structureProblem(r.text, r.truncated) || structureProblem(text, w.truncated)) { text = r.text; structureNote += ' | Sonnet retry used'; } else structureNote += ' | Sonnet retry also failed the check, kept the original';
         } catch (e) { console.log('Sonnet retry failed: ' + e.message); }
       }
       text = applyCodeFixes(text);
@@ -267,7 +269,7 @@ exports.handler = async function (event) {
     console.log('DEMO USAGE ' + JSON.stringify(usageLog));
     let cost = 0;
     usageLog.forEach(function (e) { const p = PRICES[e.model] || [3, 15]; cost += ((e.u && e.u.input_tokens) || 0) * p[0] / 1e6 + ((e.u && e.u.output_tokens) || 0) * p[1] / 1e6; });
-    const debug = Object.assign({ cost: Math.round(cost * 10000) / 10000, calls: usageLog.map(function (e) { return e.model; }), writerRaw: writerText.slice(0, 6000), finalText: text.slice(0, 6000) }, reviewInfo);
+    const debug = Object.assign({ cost: Math.round(cost * 10000) / 10000, calls: usageLog.map(function (e) { return e.model; }), writerRaw: writerText.slice(0, 6000), structureProblem: structureNote, finalText: text.slice(0, 6000) }, reviewInfo);
     try { await getStore({ name: 'run-debug' }).setJSON(jobId, Object.assign({ time: new Date().toISOString() }, debug)); } catch (e) { console.log('Debug note save failed: ' + e.message); }
     await store.setJSON(jobId, { status: 'done', debug: debug, body: JSON.stringify({ content: [{ type: 'text', text: text }] }) });
   } catch (err) {
