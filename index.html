@@ -1465,7 +1465,7 @@
             <div class="result-card">
                 <div class="result-card-header">
                     <h3>🏡 Native plant nurseries near you</h3>
-                    <p id="r-nursery-sub">All specialize in native plants for your region</p>
+                    <p id="r-nursery-sub">All specialize in native plants for your area</p>
                 </div>
                 <div class="result-card-body">
                     <div class="filter-bar" id="filter-bar"></div>
@@ -1794,7 +1794,7 @@
         var totalAvailable = combined.length;
         document.getElementById('r-nurseries').innerHTML = totalAvailable ? Math.min(demoCap, totalAvailable) + ' <span style="font-size:15px;font-weight:400;opacity:.65;">of ' + totalAvailable + '</span>' : '—';
         document.getElementById('nursery-label').textContent = local.length ? 'Local nurseries' : 'Ships nationwide';
-        document.getElementById('r-nursery-sub').textContent = combined.length ? Math.min(demoCap, combined.length) + ' of ' + combined.length + ' native nurseries shown near zip ' + currentZip + ' — get the app to see the full list' : 'No local nurseries in our database yet for this region — national mail-order options below ship anywhere in the US';
+        document.getElementById('r-nursery-sub').textContent = combined.length ? Math.min(demoCap, combined.length) + ' of ' + combined.length + ' native nurseries shown near zip ' + currentZip + ' — get the app to see the full list' : 'No local nurseries in our database yet for your area — national mail-order options below ship anywhere in the US';
         var shown = shownNurseries;
         var html = '';
         if (shown.length) {
@@ -2270,6 +2270,7 @@
                 if (pollData.status === 'error') { throw new Error(pollData.message || 'Generation failed'); }
             }
             if (!pollResult) { throw new Error('This is taking longer than expected. Please try again in a moment.'); }
+            try { if (pollResult.debug) { var oldDbg = document.getElementById('gp-debug'); if (oldDbg) oldDbg.remove(); var dbgEl = document.createElement('script'); dbgEl.type = 'application/json'; dbgEl.id = 'gp-debug'; dbgEl.textContent = JSON.stringify(pollResult.debug).replace(/</g, '\\u003c'); document.body.appendChild(dbgEl); window.__gpDebug = pollResult.debug; } } catch (dbgErr) {}
             var data = JSON.parse(pollResult.body);
             if (data.error)
                 throw new Error(data.error.message || 'API error');
