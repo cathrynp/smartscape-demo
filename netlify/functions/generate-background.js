@@ -268,6 +268,7 @@ exports.handler = async function (event) {
     let cost = 0;
     usageLog.forEach(function (e) { const p = PRICES[e.model] || [3, 15]; cost += ((e.u && e.u.input_tokens) || 0) * p[0] / 1e6 + ((e.u && e.u.output_tokens) || 0) * p[1] / 1e6; });
     const debug = Object.assign({ cost: Math.round(cost * 10000) / 10000, calls: usageLog.map(function (e) { return e.model; }), writerRaw: writerText.slice(0, 6000), finalText: text.slice(0, 6000) }, reviewInfo);
+    try { await getStore({ name: 'run-debug' }).setJSON(jobId, Object.assign({ time: new Date().toISOString() }, debug)); } catch (e) { console.log('Debug note save failed: ' + e.message); }
     await store.setJSON(jobId, { status: 'done', debug: debug, body: JSON.stringify({ content: [{ type: 'text', text: text }] }) });
   } catch (err) {
     console.log('Error:', err.message);
